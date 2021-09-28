@@ -479,9 +479,42 @@ public class taller0 {
         
     }
 
-    public static int[] buyTickets() {
+    public static void buyTickets(){ //int[] buyTickets() {
         
     }
+
+	public static void returnTickets() {
+		
+	}
+
+	public static void salesCalculator(){//para calcular las recaudaciones O VER PARA AGREGAR DIRECTAMENTE AL DESPLEGAR RECAUDACIONES
+
+	}
+
+	public static void increaseCash() {
+		
+	}
+
+	public static void displayUserInformation(){
+
+	}
+
+	public static void displayMovies() {
+		
+	}
+
+	public static void displayMoneyRaised(){
+
+	}
+
+	public static void displayClientInformation() {
+		
+	}
+
+	public static void displaySeating() {
+		
+	}
+
 
     //SE PUEDE CONSIDERAR CADA ASIENTO COMO UN PRODUCTO,
     //ASÍ SE DESCUENTA DEL STOCK DEL CINE Y AGREGA AL STOCK DEL CLIENTE
@@ -494,5 +527,4 @@ public class taller0 {
             matrix[rowIndex][columnIndex] -= 1;
         }
     }*/
-
 }
