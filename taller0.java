@@ -602,26 +602,26 @@ public class taller0 {
 	}
 
 	public static void llenadoMatrizBase(int[][] matriz){
-		for (int i = 0; i < 6; i++){
-			for (int j = 0; j < 18; j++){
+		for (int i = 0; i < 10; i++){
+			for (int j = 0; j < 30; j++){
 				matriz[i][j] = 0;
                 System.out.println(matriz[i][j]+" ");
             }
             System.out.println();
 		}
         System.out.println("\n");
-        for (int i = 0; i < 4; i++){
-            for (int j = 0; j < 4 || j > 15; j++){
+        for (int i = 0; i < 5; i++){
+            for (int j = 0; j < 5 || j > 26; j++){
                 matriz[i][j] = 1;
             }
         }
-        for (int i = 0; i < 4; i++){
-            for (int j = 0; j > 3 || j < 16; j++){
+        for (int i = 0; i < 5; i++){
+            for (int j = 0; j > 4 || j < 27; j++){
 
             }
         }
-        for (int i = 0; i > 3; i++){
-            for (int j = 0; j < 18; j++){
+        for (int i = 0; i > 4; i++){
+            for (int j = 0; j < 30; j++){
 
             }
         } 
