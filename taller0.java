@@ -21,12 +21,7 @@ public class taller0 {
 		int[] l_recaudacion = new int[500];
 		// String[] funciones = new String[500];
 
-		int[][] sala1M = new int[30][10];
-		int[][] sala1T = new int[30][10];
-		int[][] sala2M = new int[30][10];
-		int[][] sala2T = new int[30][10];
-		int[][] sala3M = new int[30][10];
-		int[][] sala3T = new int[30][10];
+		int[][] sala1M = new int[10][30],sala1T = new int[10][30],sala2M = new int[10][30],sala2T = new int[10][30],sala3M = new int[10][30],sala3T = new int[10][30];
 
 		int cant_archClientes = LeerClientes(l_nombrePersonas, l_apellidos, l_ruts, l_passwords, l_saldos);
 		LeerStatus(l_ruts, l_estados, cant_archClientes);
@@ -188,7 +183,6 @@ public class taller0 {
         		
             	} else {
             		System.out.println("\nDatos ingresados incorrectamente");
-            		System.out.println("\nDatos ingresados incorrectamente");
 					System.out.println("\nDesea registrarse? (si-no)");
             		String registro = sc.next();
             		
@@ -205,7 +199,7 @@ public class taller0 {
             		System.out.println("\nBienvenid@ "+nombres[verificacion] + ": Que opcion desea realizar?");
             		System.out.println("a) Comprar entradas");
             		System.out.println("b) Agregar saldo");
-            		System.out.println("c) Ver informacion de usuario\n");
+            		System.out.println("c) Ver informacion de usuario");
 					System.out.println("d) Devolver entradas\n");
             		String opcion = sc.next();
             				
@@ -545,7 +539,7 @@ public class taller0 {
 	//FALTA
 	public static void reWriteClients(String file, String[] names, String[] lastNames, String[] ruts,
 			String[] passwords, int[] balances) {
-
+			
 	}
 
 	//FALTA
@@ -606,6 +600,32 @@ public class taller0 {
 	public static void displaySeating() {
 
 	}
+
+	public static void llenadoMatrizBase(int[][] matriz){
+		for (int i = 0; i < 6; i++){
+			for (int j = 0; j < 18; j++){
+				matriz[i][j] = 0;
+                System.out.println(matriz[i][j]+" ");
+            }
+            System.out.println();
+		}
+        System.out.println("\n");
+        for (int i = 0; i < 4; i++){
+            for (int j = 0; j < 4 || j > 15; j++){
+                matriz[i][j] = 1;
+            }
+        }
+        for (int i = 0; i < 4; i++){
+            for (int j = 0; j > 3 || j < 16; j++){
+
+            }
+        }
+        for (int i = 0; i > 3; i++){
+            for (int j = 0; j < 18; j++){
+
+            }
+        } 
+    }
 
 	// SE PUEDE CONSIDERAR CADA ASIENTO COMO UN PRODUCTO,
 	// ASÍ SE DESCUENTA DEL STOCK DEL CINE Y AGREGA AL STOCK DEL CLIENTE
