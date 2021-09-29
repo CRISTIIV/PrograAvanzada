@@ -115,7 +115,7 @@ public class taller0 {
 		return -1;
 	}
 
-	//FALTAN COSAS
+	//FALTAN COSAS (LA TAQUILLA, LOS DESPLEGAR INFORMACIÓN, COMPRAR Y DEVOLVER ENTRADAS)
     public static void IniciarSesion(String[] nombres,String[] ruts,int cantidadClientes,String[]apellidos,String[]passwords,int[]saldos,String[]estados) {
         Scanner sc = new Scanner(System.in);
         for(int i=0;i<cantidadClientes;i++)
@@ -206,6 +206,7 @@ public class taller0 {
             		System.out.println("a) Comprar entradas");
             		System.out.println("b) Agregar saldo");
             		System.out.println("c) Ver informacion de usuario\n");
+					System.out.println("d) Devolver entradas\n");
             		String opcion = sc.next();
             				
             		switch(opcion){
@@ -225,6 +226,9 @@ public class taller0 {
                             System.out.println("\nUsted ha seleccionado <Ver informacion de usuario>,\na continuacion se desplegará la información perteneciente al usuario en uso");
                             System.out.println("Su nombre es: "+nombres[verificacion]+" "+apellidos[verificacion]+", de rut: "+ruts[verificacion]+"\nCon saldo: $"+saldos[verificacion]+"\nY sus entradas compradas son: ");
                             break;
+						case "d":
+							System.out.println("\nUsted ha seleccionado <devolver entradas>, a continuacion le mostraremos sus entradas para que las seleccione: ");
+							break;
             					
             			default:
             				System.out.println("\nOpcion no valida");
