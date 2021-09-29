@@ -31,7 +31,7 @@ public class taller0 {
 		int cant_archClientes = LeerClientes(l_nombrePersonas, l_apellidos, l_ruts, l_passwords, l_saldos);
 		LeerStatus(l_ruts, l_estados, cant_archClientes);
 		int cant_archPeliculas = LeerPeliculas(l_nombrePeliculas, l_tipo, l_recaudacion);
-		IniciarSesion(l_nombrePersonas, l_ruts, cant_archClientes, l_apellidos, l_passwords, l_saldos);
+		IniciarSesion(l_nombrePersonas, l_ruts, cant_archClientes, l_apellidos, l_passwords, l_saldos, l_estados);
 
 		sc.close();
 
@@ -116,13 +116,12 @@ public class taller0 {
 	}
 
 	//FALTAN COSAS
-    public static void IniciarSesion(String[] nombres,String[] ruts,int cantidadClientes,String[]apellidos,String[]passwords,int[]saldos) {
+    public static void IniciarSesion(String[] nombres,String[] ruts,int cantidadClientes,String[]apellidos,String[]passwords,int[]saldos,String[]estados) {
         Scanner sc = new Scanner(System.in);
         for(int i=0;i<cantidadClientes;i++)
         {
             System.out.println("\n"+nombres[i]+","+apellidos[i]+","+ruts[i]+","+passwords[i]+",$"+saldos[i]);
         }
-        //IniciarSesion(ruts, passwords, cantidadClientes, sc);
         System.out.println("\n==============\nINICIAR SESION\n==============");
         System.out.println("\nIngrese su rut: ");
         String Id = sc.next();
@@ -189,14 +188,15 @@ public class taller0 {
         		
             	} else {
             		System.out.println("\nDatos ingresados incorrectamente");
-            		//System.out.println("Desea registrarse? (si-no)");
-            		//String registro = sc.next();
+            		System.out.println("\nDatos ingresados incorrectamente");
+					System.out.println("\nDesea registrarse? (si-no)");
+            		String registro = sc.next();
             		
-                    //FORMA OPCIONAL PARA HACER EL REGISTRO, HABRÍA QUE MODIFICAR EL SUBPROGRAMA DE REGISTRO.
-            		//if (registro.equals("si")){
-            		//	cantidadClientes = register(cantidadClientes, nombres, apellidos, ruts, passwords, saldos);
-            		//}
-            		
+
+            		if (registro.equals("si")){
+            			registro(nombres,apellidos,ruts,passwords,saldos,estados,cantidadClientes);
+						break;
+            		}
             	}
             	indiceNegativo = true;
             }
@@ -473,29 +473,39 @@ public class taller0 {
 		return -1;
 	}
 	
-	//FALTA IMPLEMENTARLO EN EL INICIO DE SESION
-	public static void registro(String[] nombres, String[] apellidos, String[] ruts, String[] passwords, int[] saldos,
-			String[] l_estados, int cant_clientes, Scanner sc) {
-		System.out.println("Ingrese su nombre: ");
+	public static void registro(String[] nombres, String[] apellidos, String[] ruts, String[] passwords, int[] saldos, String[] estados, int cantidadClientes) {
+        Scanner sc = new Scanner(System.in);
+		System.out.println("\nIngrese su nombre: ");
 		String nombre = sc.nextLine();
-		StringLlenarArray(nombres, nombre, cant_clientes);
+		StringLlenarArray(nombres, nombre, cantidadClientes);
 
-		System.out.println("Ingrese su apellido: ");
+		System.out.println("\nIngrese su apellido: ");
 		String apellido = sc.nextLine();
-		StringLlenarArray(apellidos, apellido, cant_clientes);
+		StringLlenarArray(apellidos, apellido, cantidadClientes);
 
-		System.out.println("Ingrese su rut (con puntos y guion): ");
+		System.out.println("\nIngrese su rut (con puntos y guion): ");
 		String Id = sc.nextLine();
-		StringLlenarArray(ruts, Id, cant_clientes);
+		StringLlenarArray(ruts, Id, cantidadClientes);
 
-		System.out.println("Ingrese su contraseña: ");
-		String password = sc.nextLine();
-		StringLlenarArray(passwords, password, cant_clientes);
-
-		System.out.println("Ingrese su saldo: ");
+		System.out.println("\nIngrese su saldo: ");
 		int saldo = Integer.parseInt(sc.nextLine());
-		IntLlenarArray(saldos, saldo, cant_clientes);
-		System.out.println("Registrado correctamente");
+		IntLlenarArray(saldos, saldo, cantidadClientes);
+
+		System.out.println("\nIngrese su estado covid (HABILITADO - NO HABILITADO): ");
+		String estado = sc.nextLine();
+		StringLlenarArray(estados, estado, cantidadClientes);
+
+		System.out.println("\nIngrese su contraseña: ");
+		String passwordRegistro = sc.nextLine();
+
+		System.out.println("\nConfirme su contraseña: ");
+		String password2 = sc.next();
+		if(passwordRegistro.equals(password2)) {
+			StringLlenarArray(passwords, passwordRegistro, cantidadClientes);
+			System.out.println("Registrado correctamente");
+		} else {
+			System.out.println("Hubo un error en el registro");
+		}
 	}
 
 	public static void StringLlenarArray(String[] array, String variable, int cant) {
