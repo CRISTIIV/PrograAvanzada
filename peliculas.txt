@@ -1,0 +1,2 @@
+Rapidos y furiosos,estreno,15000000,2,M,2,T,1,T
+El lorax,liberada,20000000,1,M,3,M,3,T

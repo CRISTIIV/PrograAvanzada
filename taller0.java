@@ -31,7 +31,7 @@ public class taller0 {
 		int cant_archClientes = LeerClientes(l_nombrePersonas, l_apellidos, l_ruts, l_passwords, l_saldos);
 		LeerStatus(l_ruts, l_estados, cant_archClientes);
 		int cant_archPeliculas = LeerPeliculas(l_nombrePeliculas, l_tipo, l_recaudacion);
-		IniciarSesion(l_nombrePersonas, l_apellidos, l_ruts, l_passwords, l_saldos, l_estados, cant_archClientes, sc);
+		IniciarSesion(l_nombrePersonas, l_ruts, cant_archClientes, l_apellidos, l_passwords, l_saldos);
 
 		sc.close();
 
@@ -115,86 +115,154 @@ public class taller0 {
 		return -1;
 	}
 
-	public static void IniciarSesion(String[] l_nombrePersonas, String[] l_apellidos, String[] l_ruts,
-			String[] l_passwords, int[] l_saldos, String[] l_estados, int cant, Scanner sc) {
-		System.out.println("Bienvenido a nuestra boleteria online!");
-		boolean flag = true;
-		boolean cierre;
+    public static void IniciarSesion(String[] nombres,String[] ruts,int cantidadClientes,String[]apellidos,String[]passwords,int[]saldos) {
+        Scanner sc = new Scanner(System.in);
+        for(int i=0;i<cantidadClientes;i++)
+        {
+            System.out.println("\n"+nombres[i]+","+apellidos[i]+","+ruts[i]+","+passwords[i]+",$"+saldos[i]);
+        }
+        //IniciarSesion(ruts, passwords, cantidadClientes, sc);
+        System.out.println("\n==============\nINICIAR SESION\n==============");
+        System.out.println("\nIngrese su rut: ");
+        String Id = sc.next();
 
-		do {
-			System.out.println("\nSi desea iniciar sesion, presione 1. Si desea registrarse, presione 2");
-			int opcion = Integer.parseInt(sc.nextLine());
+        System.out.println("\nIngrese su password: ");
+        String password = sc.next();
+        
+        while(true){
+        	Boolean indiceNegativo = false;
+        	int verificacion = -1;
+            try {
 
-			switch (opcion) {
-				case 1:
-					System.out.print("Ingrese su rut: ");
-					String rut = sc.nextLine();
-					String password;
+                verificacion = VerificarRut(ruts, Id, cantidadClientes);
+            } catch (Exception e) {
+                verificacion = -1;
+            }
+            //int peopleIndex = index(Ids, Id);
+            
+            if (verificacion==(-1)|| !password.equals(passwords[verificacion])){
+            	if (Id.equals("ADMIN") && password.equals("ADMIN")){
+        			while(true){                
+        				System.out.println("\nADMIN: Que opcion desea realizar?");
+        				System.out.println("a) revisar taquilla");
+        				System.out.println("b) informacion de clientes\n");
+        				String opcion = sc.next();
+        				
+        				switch(opcion){
+        				case "a":   
+        					System.out.println("\nLa taquilla es: \n");
+        					break;
+        					
+        				case "b":
+        					System.out.println("\nIngrese el rut del cliente que quiere consultar informacion: ");
+                            String rutAnalizar = sc.next();
+                            while(true){
+                                Boolean indiceNegativo2 = false;
+                                int verificacion2 = -1;
+                                try {
+                                    verificacion2 = VerificarRut(ruts, rutAnalizar, cantidadClientes);
+                                } 
+                                catch (Exception e) {
+                                    verificacion2 = -1;
+                                }
+                                if(!indiceNegativo2){
+                                    while(true){
+                                        System.out.println("\nINFORMACION DEL CLIENTE: ");
+                                        System.out.println("El nombre del cliente es: "+nombres[verificacion2]+" "+apellidos[verificacion2]+", de rut: "+ruts[verificacion2]+"\nCon saldo: $"+saldos[verificacion2]+"\nY sus entradas compradas son: ");
+                                        break;
+                                    }
+                                }
+                            break;
+                            }
+        					
+        				default:
+        					System.out.println("\nOpcion no valida");
+        				}
+        				System.out.println("\nDesea cerrar sesion?\n<si> para salir.\n<cualquier otra cosa> para continuar.");
+        				String salir = sc.next();
+        				
+        				if (salir.equals("si")){
+        					break;
+        				}
+        			}
+        		
+            	} else {
+            		System.out.println("\nDatos ingresados incorrectamente");
+            		//System.out.println("Desea registrarse? (si-no)");
+            		//String registro = sc.next();
+            		
+                    //FORMA OPCIONAL PARA HACER EL REGISTRO, HABRÍA QUE MODIFICAR EL SUBPROGRAMA DE REGISTRO.
+            		//if (registro.equals("si")){
+            		//	cantidadClientes = register(cantidadClientes, nombres, apellidos, ruts, passwords, saldos);
+            		//}
+            		
+            	}
+            	indiceNegativo = true;
+            }
+            if(!indiceNegativo) {
+            	while(true){
+            		System.out.println("\nBienvenid@ "+nombres[verificacion] + ": Que opcion desea realizar?");
+            		System.out.println("a) Comprar entradas");
+            		System.out.println("b) Agregar saldo");
+            		System.out.println("c) Ver informacion de usuario\n");
+            		String opcion = sc.next();
+            				
+            		switch(opcion){
+            			case "a":   
+                            //saleByType = buy(stock,inventory, precioUnitario, "resta","suma", storesName, productsName,verificacion, balances, recaudacionProductoCompras, recaudacionCompras, cantidadProductos, cantidadTiendas,productsType);
+                            System.out.println("\nUsted ha seleccionado <comprar entradas>, a continuacion le mostraremos la cartelera: ");
+                            break;
 
-					if (rut.equals("ADMIN")) {
-						System.out.print("Ingrese su contraseña: ");
-						password = sc.nextLine();
-						if (password.equals("ADMIN")) {
-							// MenuAdmin();
-							System.out.println("Admin.");
-						}
+            			case "b":
+            				increaseCash(verificacion, saldos);
+                            System.out.println("\nAumento de saldo realizado con exito");
+            				break;
+            					
+            			case "c":
+                            //displayInformation(verificacion, names, lastNames, inventory, productsName,cantidadProductos);
+                            //System.out.println("Su saldo es: $"+balances[verificacion]);
+                            System.out.println("\nUsted ha seleccionado <Ver informacion de usuario>,\na continuacion se desplegará la información perteneciente al usuario en uso");
+                            System.out.println("Su nombre es: "+nombres[verificacion]+" "+apellidos[verificacion]+", de rut: "+ruts[verificacion]+"\nCon saldo: $"+saldos[verificacion]+"\nY sus entradas compradas son: ");
+                            break;
+            					
+            			default:
+            				System.out.println("\nOpcion no valida");
+            		}
+            		System.out.println("\nDesea cerrar sesion?\n<si> para salir.\n<cualquier otra cosa> para continuar.");
+            		String salir = sc.next();
+            				
+            		if (salir.equals("si")){
+            			break;
+            		}
+            	}	
+            }
+   
+            Boolean cierre = CierreSistema();
+            if (cierre) {
+            	break;
+            } else {
+            	System.out.println("\nIngrese su rut: ");
+            	Id = sc.next();
+            		
+            	System.out.println("\nIngrese su password: ");
+            	password = sc.next();
+            }
+        }
+        sc.close();
+    }
 
-						else {
-							System.out.println("Parece que te equivocaste de contraseña. ADMIN.");
-							cierre = CierreSistema(sc);
-							if (cierre == true) {
-								flag = false;
-							}
-						}
-					}
+    public static Boolean CierreSistema() {
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("\nDesea cerrar el sistema?\n<si> para cerrar el sistema.\n<cualquier otra cosa> para continuar.");
+        String cierre = sc.nextLine();
 
-					else {
-
-						int auxRut = VerificarRut(l_ruts, rut, cant);
-						if (auxRut != -1) {
-							System.out.print("Ingrese su contraseña: ");
-							password = sc.nextLine();
-
-							int auxPassword = buscarIndexString(l_passwords, password, cant);
-							if (auxPassword != -1) {
-								// MenuCliente();
-								System.out.println("Cliente.");
-							}
-
-							else {
-								System.out.println("Contraseña equivocada.");
-								cierre = CierreSistema(sc);
-								if (cierre == true) {
-									flag = false;
-								}
-							}
-						}
-
-						else {
-							System.out.println("Este rut no se encuentra registrado o esta erroneo.");
-							cierre = CierreSistema(sc);
-							if (cierre == true) {
-								flag = false;
-							}
-						}
-					}
-
-					break;
-
-				case 2:
-					registro(l_nombrePersonas, l_apellidos, l_ruts, l_passwords, l_saldos, l_estados, cant, sc);
-					break;
-
-				default:
-					System.out.println("Ingrese una opcion valida.");
-					cierre = CierreSistema(sc);
-					if (cierre == true) {
-						flag = false;
-					}
-			}
-
-		} while (flag);
-	}
+        
+        if(cierre.equals("si")){
+            return true;
+        } else {
+            return false;
+        }
+    }        
 
 	public static int VerificarRut(String[] l_ruts, String rut, int cant) {
 
@@ -404,21 +472,6 @@ public class taller0 {
 		return -1;
 	}
 
-	public static Boolean CierreSistema(Scanner sc) {
-
-		System.out.println(
-				"\nDesea cerrar el sistema? 1 para cerrar el sistema, cualquier otra tecla para intentarlo nuevamente.");
-		String cierre = sc.nextLine();
-
-		if (cierre.equals("1")) {
-			return true;
-		}
-
-		else {
-			return false;
-		}
-	}
-
 	public static void registro(String[] nombres, String[] apellidos, String[] ruts, String[] passwords, int[] saldos,
 			String[] l_estados, int cant_clientes, Scanner sc) {
 		System.out.println("Ingrese su nombre: ");
@@ -499,9 +552,14 @@ public class taller0 {
 
 	}
 
-	public static void increaseCash() {
+    public static void increaseCash(int peopleIndex, int[]balances) {
+        Scanner sc = new Scanner (System.in);
+        System.out.println("\nIngrese el saldo que quiere agregar: ");
+        int saldo = sc.nextInt();
 
-	}
+        balances[peopleIndex] += saldo;
+
+    }
 
 	public static void displayUserInformation() {
 
