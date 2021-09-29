@@ -115,6 +115,7 @@ public class taller0 {
 		return -1;
 	}
 
+	//FALTAN COSAS
     public static void IniciarSesion(String[] nombres,String[] ruts,int cantidadClientes,String[]apellidos,String[]passwords,int[]saldos) {
         Scanner sc = new Scanner(System.in);
         for(int i=0;i<cantidadClientes;i++)
@@ -471,7 +472,8 @@ public class taller0 {
 
 		return -1;
 	}
-
+	
+	//FALTA IMPLEMENTARLO EN EL INICIO DE SESION
 	public static void registro(String[] nombres, String[] apellidos, String[] ruts, String[] passwords, int[] saldos,
 			String[] l_estados, int cant_clientes, Scanner sc) {
 		System.out.println("Ingrese su nombre: ");
@@ -526,28 +528,33 @@ public class taller0 {
 		array[i] = variable;
 	}
 
+	//FALTA
 	public static void reWriteClients(String file, String[] names, String[] lastNames, String[] ruts,
 			String[] passwords, int[] balances) {
 
 	}
 
+	//FALTA
 	public static void reWriteMovies(String file, String[] titles, String[] tipe, int[] moneyRaised,
 			String[] schedules) {
 
 	}
 
+	//FALTA
 	public static void matrixFill() {
 
 	}
-
+	//FALTA
 	public static void buyTickets() { // int[] buyTickets() {
 
 	}
 
+	//FALTA
 	public static void returnTickets() {
 
 	}
 
+	//FALTA
 	public static void salesCalculator() {// para calcular las recaudaciones O VER PARA AGREGAR DIRECTAMENTE AL DESPLEGAR RECAUDACIONES
 
 	}
@@ -561,22 +568,27 @@ public class taller0 {
 
     }
 
+	//FALTA
 	public static void displayUserInformation() {
 
 	}
 
+	//FALTA
 	public static void displayMovies() {
 
 	}
-
+	
+	//FALTA
 	public static void displayMoneyRaised() {
 
 	}
 
+	//FALTA
 	public static void displayClientInformation() {
 
 	}
 
+	//FALTA
 	public static void displaySeating() {
 
 	}
