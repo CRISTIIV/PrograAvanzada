@@ -36,7 +36,11 @@ public class taller0 {
 		definirCarteleras(carteleraM,carteleraT,l_nombrePeliculas,cant_archPeliculas);
 
 		llenadoMatrizBase(sala1M);
-		llenadoMatrizBase(sala1t);
+		llenadoMatrizBase(sala1T);
+		llenadoMatrizBase(sala2M);
+		llenadoMatrizBase(sala2T);
+		llenadoMatrizBase(sala3M);
+		llenadoMatrizBase(sala3T);
 
 
 		IniciarSesion(l_nombrePersonas, l_ruts, cant_archClientes, l_apellidos, l_passwords, l_saldos, l_estados);
@@ -45,8 +49,7 @@ public class taller0 {
 
 	}
 
-	public static int LeerClientes(String[] l_nombrePersonas, String[] l_apellidos, String[] l_ruts,
-			String[] l_passwords, int[] l_saldos) throws IOException {
+	public static int LeerClientes(String[] l_nombrePersonas, String[] l_apellidos, String[] l_ruts,String[] l_passwords, int[] l_saldos) throws FileNotFoundException {
 		Scanner arch = new Scanner(new File("clientes.txt"));
 		int cant = 0;
 		while (arch.hasNextLine()) {
@@ -69,7 +72,7 @@ public class taller0 {
 		return cant;
 	}
 
-	public static void LeerStatus(String[] l_ruts, String[] l_estados, int cant_archClientes) throws IOException {
+	public static void LeerStatus(String[] l_ruts, String[] l_estados, int cant_archClientes) throws FileNotFoundException {
 		Scanner arch = new Scanner(new File("status.txt"));
 		while (arch.hasNextLine()) {
 			String linea = arch.nextLine();
@@ -83,8 +86,7 @@ public class taller0 {
 		}
 	}
 
-	public static int LeerPeliculas(String[] l_nombrePeliculas, String[] l_tipo, int[] l_recaudacion)
-			throws IOException {
+	public static int LeerPeliculas(String[] l_nombrePeliculas, String[] l_tipo, int[] l_recaudacion) throws FileNotFoundException{
 		Scanner arch = new Scanner(new File("peliculas.txt"));
 		int cant = 0;
 		while (arch.hasNextLine()) {
@@ -104,7 +106,7 @@ public class taller0 {
 		return cant;
 	}
 
-	public static void definirCarteleras(Boolean[][] carteleraM, Boolean[][] carteleraT, String[] peliculas, int cant) throws IOException {
+	public static void definirCarteleras(Boolean[][] carteleraM, Boolean[][] carteleraT, String[] peliculas, int cant) throws FileNotFoundException {
 		Scanner arch = new Scanner (new File("peliculas.txt"));
 		
 		for (int i = 0 ; i <= cant ; i++) {
