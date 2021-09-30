@@ -19,13 +19,26 @@ public class taller0 {
 		String[] l_nombrePeliculas = new String[500];
 		String[] l_tipo = new String[500];
 		int[] l_recaudacion = new int[500];
-		// String[] funciones = new String[500];
 
-		int[][] sala1M = new int[10][30],sala1T = new int[10][30],sala2M = new int[10][30],sala2T = new int[10][30],sala3M = new int[10][30],sala3T = new int[10][30];
+		int[][] sala1M = new int[10][30];
+		int[][] sala1T = new int[10][30];
+		int[][] sala2M = new int[10][30];
+		int[][] sala2T = new int[10][30];
+		int[][] sala3M = new int[10][30];
+		int[][] sala3T = new int[10][30];
+
+		Boolean[][] carteleraM = new Boolean[500][3];
+		Boolean[][] carteleraT = new Boolean[500][3];
 
 		int cant_archClientes = LeerClientes(l_nombrePersonas, l_apellidos, l_ruts, l_passwords, l_saldos);
 		LeerStatus(l_ruts, l_estados, cant_archClientes);
 		int cant_archPeliculas = LeerPeliculas(l_nombrePeliculas, l_tipo, l_recaudacion);
+		definirCarteleras(carteleraM,carteleraT,l_nombrePeliculas,cant_archPeliculas);
+
+		llenadoMatrizBase(sala1M);
+		llenadoMatrizBase(sala1t);
+
+
 		IniciarSesion(l_nombrePersonas, l_ruts, cant_archClientes, l_apellidos, l_passwords, l_saldos, l_estados);
 
 		sc.close();
@@ -34,7 +47,7 @@ public class taller0 {
 
 	public static int LeerClientes(String[] l_nombrePersonas, String[] l_apellidos, String[] l_ruts,
 			String[] l_passwords, int[] l_saldos) throws IOException {
-		Scanner arch = new Scanner(new File("Clientes.txt"));
+		Scanner arch = new Scanner(new File("clientes.txt"));
 		int cant = 0;
 		while (arch.hasNextLine()) {
 			String linea = arch.nextLine();
@@ -57,7 +70,7 @@ public class taller0 {
 	}
 
 	public static void LeerStatus(String[] l_ruts, String[] l_estados, int cant_archClientes) throws IOException {
-		Scanner arch = new Scanner(new File("Status.txt"));
+		Scanner arch = new Scanner(new File("status.txt"));
 		while (arch.hasNextLine()) {
 			String linea = arch.nextLine();
 			String[] datos = linea.split(",");
@@ -72,7 +85,7 @@ public class taller0 {
 
 	public static int LeerPeliculas(String[] l_nombrePeliculas, String[] l_tipo, int[] l_recaudacion)
 			throws IOException {
-		Scanner arch = new Scanner(new File("Peliculas.txt"));
+		Scanner arch = new Scanner(new File("peliculas.txt"));
 		int cant = 0;
 		while (arch.hasNextLine()) {
 			String linea = arch.nextLine();
@@ -80,7 +93,7 @@ public class taller0 {
 			String nombrePelicula = datos[0];
 			String tipo = datos[1];
 			int recaudacion = Integer.parseInt(datos[2]);
-			// String funciones = datos[3];
+
 			l_nombrePeliculas[cant] = nombrePelicula;
 			l_tipo[cant] = tipo;
 			l_recaudacion[cant] = recaudacion;
@@ -89,6 +102,65 @@ public class taller0 {
 
 		arch.close();
 		return cant;
+	}
+
+	public static void definirCarteleras(Boolean[][] carteleraM, Boolean[][] carteleraT, String[] peliculas, int cant) throws IOException {
+		Scanner arch = new Scanner (new File("peliculas.txt"));
+		
+		for (int i = 0 ; i <= cant ; i++) {
+			for (int j = 0 ; j <= 2 ; j++) {
+				carteleraM[i][j] = false;
+				carteleraT[i][j] = false;
+			}
+		}
+		
+		while(arch.hasNextLine()) {
+			String linea = arch.nextLine();
+			String [] datos = linea.split(",");
+			String nombrePelicula = datos[0];
+			int auxPelicula = buscarIndexString(peliculas, nombrePelicula, cant);
+			
+			for (int i = 3 ; i < datos.length ; i+=2 ) {
+				int sala = Integer.parseInt(datos[i]);
+				String horario = datos[i+1];
+				
+				switch (horario) {
+				
+				case "M":
+					if (sala == 1) {
+						carteleraM[auxPelicula][0] = true;						
+					}
+					
+					if (sala == 2) {
+						carteleraM[auxPelicula][1] = true;	
+						
+					}
+				
+					if (sala == 3) {
+						carteleraM[auxPelicula][2] = true;	
+					}
+					
+					break;
+					
+				case "T":
+					
+					if (sala == 1) {
+						carteleraT[auxPelicula][0] = true;	
+					}
+					
+					if (sala == 2) {
+						carteleraT[auxPelicula][1] = true;	
+					}
+				
+					if (sala == 3) {
+						carteleraT[auxPelicula][2] = true;	
+					}
+					
+					break;							
+				}
+			}
+		}
+		arch.close();
 	}
 
 	public static int buscarIndexString(String[] array, String key, int cant) {
@@ -549,10 +621,6 @@ public class taller0 {
 	}
 
 	//FALTA
-	public static void matrixFill() {
-
-	}
-	//FALTA
 	public static void buyTickets() { // int[] buyTickets() {
 
 	}
@@ -601,30 +669,29 @@ public class taller0 {
 
 	}
 
-	public static void llenadoMatrizBase(int[][] matriz){
+    public static void llenadoMatrizBase(int[][] salaCine){
 		for (int i = 0; i < 10; i++){
 			for (int j = 0; j < 30; j++){
-				matriz[i][j] = 0;
-                System.out.println(matriz[i][j]+" ");
-            }
-            System.out.println();
+				salaCine[i][j] = 1;
+                
+                salaCine[0][0] = 0;salaCine[0][1] = 0;salaCine[0][2] = 0;salaCine[0][3] = 0;salaCine[0][4] = 0;salaCine[0][29] = 0;salaCine[0][28] = 0;salaCine[0][27] = 0;salaCine[0][26] = 0;salaCine[0][25] = 0;
+                salaCine[1][0] = 0;salaCine[1][1] = 0;salaCine[1][2] = 0;salaCine[1][3] = 0;salaCine[1][4] = 0;salaCine[1][29] = 0;salaCine[1][28] = 0;salaCine[1][27] = 0;salaCine[1][26] = 0;salaCine[1][25] = 0;
+                salaCine[2][0] = 0;salaCine[2][1] = 0;salaCine[2][2] = 0;salaCine[2][3] = 0;salaCine[2][4] = 0;salaCine[2][29] = 0;salaCine[2][28] = 0;salaCine[2][27] = 0;salaCine[2][26] = 0;salaCine[2][25] = 0;
+                salaCine[3][0] = 0;salaCine[3][1] = 0;salaCine[3][2] = 0;salaCine[3][3] = 0;salaCine[3][4] = 0;salaCine[3][29] = 0;salaCine[3][28] = 0;salaCine[3][27] = 0;salaCine[3][26] = 0;salaCine[3][25] = 0;
+               
+                //LOS ASIENTOS CON "0" SON LOS DISPONIBLES O UTILIZABLES, LOS "1" SON LOS INCAPACITADOS
+                
+                if (salaCine[i][j] == 1 && i % 2 == 0 && j % 2 == 0) {
+                	salaCine[i][j] = 0;
+                }
+                if (salaCine[i][j] == 1 && i % 2 != 0 && j % 2 != 0) {
+                	salaCine[i][j] = 0;
+                }
+                
+                //System.out.println(salaCine[i][j]+" ");
+			}
+			//System.out.println("\n");
 		}
-        System.out.println("\n");
-        for (int i = 0; i < 5; i++){
-            for (int j = 0; j < 5 || j > 26; j++){
-                matriz[i][j] = 1;
-            }
-        }
-        for (int i = 0; i < 5; i++){
-            for (int j = 0; j > 4 || j < 27; j++){
-
-            }
-        }
-        for (int i = 0; i > 4; i++){
-            for (int j = 0; j < 30; j++){
-
-            }
-        } 
     }
 
 	// SE PUEDE CONSIDERAR CADA ASIENTO COMO UN PRODUCTO,
