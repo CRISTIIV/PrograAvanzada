@@ -14,5 +14,25 @@ public interface SistemaRitoGames {
 
     void asociarSkinPersonaje(String nombreSkin, String nombrePersonaje);
 
+    void asociarSkinUsuario(String nombreSkin, String nombreCuenta);
+
+    String iniciarSesion(String nombreCuenta, String password);
+
+    boolean registrarUsuario(String nombreCuenta, String nick, String password, String region);
+
+    boolean cambiarPassword(String oldPassword, String newPassword);
+
+    String obtenerDatosUsuario();
+
+    String obtenerDatosPersonajes();
+
+    String obtenerDatosSkins();
+
+    String obtenerPersonajeSegunUsuario(String nombreCuenta);
+
+    String obtenerSkinSegunUsuario(String nombreCuenta);
+
+    String obtenerSkinSegunPersonaje(String nombrePersonaje);
+
     
 }
