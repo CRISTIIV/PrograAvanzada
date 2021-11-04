@@ -1,4 +1,4 @@
-package Taller1.dominio;
+package Taller1_Git.dominio;
 
 public class Personaje {
     
