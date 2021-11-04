@@ -34,5 +34,26 @@ public interface SistemaRitoGames {
 
     String obtenerSkinSegunPersonaje(String nombrePersonaje);
 
+    void comprarPersonaje(String nombreCuenta, String nombrePersonaje);
+
+    void comprarSkin(String nombreCuenta, String nombrePersonaje, String nombreSkin);
+
+    void recargarRP(String nombreCuenta, int rp);
+
+    String obtenerEstadisticasPersonaje(String nombrePersonaje);
+
+    String obtenerRecaudacionPorRol();
+
+    String obtenerRecaudacionPorRegion();
+
+    String obtenerCantPersonajesPorRol();
+
+    String cuentasMayMen();
+
+    boolean agregarNuevaSkin(String nombrePersonaje, String nombreSkin, String calidad);
+
+    boolean agregarNuevoPersonaje(String nombrePersonaje, String rol, int numeroSkins);
+
+    void bloqueoUsuario(String nombreCuenta);
     
 }
