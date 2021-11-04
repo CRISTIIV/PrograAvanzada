@@ -1,4 +1,4 @@
-package Taller1.logica;
+package Taller1_Git.logica;
 
 public class ListaPersonajePoseido {
     
