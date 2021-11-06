@@ -6,6 +6,7 @@ public class ListaPersonajePoseido {
     private int cantidad;
     private int maximo;
     private PersonajePoseido[] listaPersonajesPoseidos;
+    private Personaje personaje;
 
     public ListaPersonajePoseido(int maximo){
         this.cantidad = 0;
@@ -56,7 +57,7 @@ public class ListaPersonajePoseido {
         }
         return null;
     }
-
+    //VIÉNDOLO BIEN ESTE NO TIENE MUCHO SENTIDO, PERO ESPERAR A QUE REVISEN
     public PersonajePoseido buscarPorNombrePersonaje2(Personaje personaje){
         for (int i = 0; i < cantidad; i++){
             personaje = listaPersonajesPoseidos[i];
