@@ -1,13 +1,34 @@
 package Taller1_Git.logica;
 
+import Taller1_Git.dominio.Personaje;
+import Taller1_Git.dominio.PersonajePoseido;
+import Taller1_Git.dominio.Skin;
+import Taller1_Git.dominio.Usuario;
+
 public class SistemaRitoGamesImpl implements SistemaRitoGames{
 
+    private ListaPersonaje personajes;
+    private ListaPersonajePoseido personajesPoseidos;
+    private ListaSkin skins;
+    private ListaUsuario usuarios;
+
     public SistemaRitoGamesImpl(){
-
+        usuarios = new ListaUsuario(500);
+        skins = new ListaSkin(100);
+        personajes = new ListaPersonaje(200);
+        personajesPoseidos = new ListaPersonajePoseido(1000);
     }
-
-    boolean agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region){
-
+    @Override
+    void agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region){
+        Usuario usuario = usuarios.buscarPorCuenta(nombreCuenta);
+        if (usuario == null){
+            Usuario usuarioNuevo = new Usuario(nombreCuenta,password,nick,nivel,rp,totalPersonajes,nombrePersonajes,totalSkins,nombreSkins,region);
+            if (!usuarios.insertar(usuarioNuevo)){
+                throw new NullPointerException("La lista de cuentas está llena");
+            }
+        } else {
+            throw new NullPointerException("La cuenta ya existe");
+        }
     }
 
     boolean agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int estadisticas){
