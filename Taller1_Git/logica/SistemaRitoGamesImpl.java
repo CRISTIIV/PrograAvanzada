@@ -13,14 +13,14 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
     private ListaUsuario usuarios;
 
     public SistemaRitoGamesImpl(){
-        usuarios = new ListaUsuario(500);
-        skins = new ListaSkin(100);
+        usuarios = new ListaUsuario(1000);
+        skins = new ListaSkin(1000);
         personajes = new ListaPersonaje(200);
         personajesPoseidos = new ListaPersonajePoseido(1000);
     }
     @Override
     void agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region){
-        Usuario usuario = usuarios.buscarPorCuenta(nombreCuenta);
+        Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         if (usuario == null){
             Usuario usuarioNuevo = new Usuario(nombreCuenta,password,nick,nivel,rp,totalPersonajes,nombrePersonajes,totalSkins,nombreSkins,region);
             if (!usuarios.insertar(usuarioNuevo)){
