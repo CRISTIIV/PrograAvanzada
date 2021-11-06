@@ -45,4 +45,7 @@ public class Personaje {
     public void setListaSkins(ListaSkin listaSkins) {
         this.listaSkins = listaSkins;
     }
+    public void aumentarRecaudacion(double d){
+        recaudacionPersonaje += d;
+    }
 }
