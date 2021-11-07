@@ -29,7 +29,6 @@ public class Main {
     }
 
 
-    //LISTO
     public static void mainMenu(SistemaRitoGames sistema, String nombreCuenta, String password){
         Scanner sc = new Scanner(System.in);
         if(nombreCuenta.equals("ADMIN")) {
@@ -213,13 +212,11 @@ public class Main {
 
     }
     
-    //EDITAR
     private static void cierreSistema(SistemaSonRisas sistema)  {
         try {
-            sobreEscribirCitas(sistema);
-            sobreEscribirClinicas(sistema);
-            sobreEscribirClientes(sistema);
-            sobreEscribirDentistas(sistema);
+            sobreEscribirCuentas(sistema);
+            sobreEscribirPersonajes(sistema);
+            sobreEscribirEstadisticas(sistema);
         } catch (Exception e) {
             System.out.println("Hubo un error en el cierre de sistema, comprobar archivos de texto");
         }
