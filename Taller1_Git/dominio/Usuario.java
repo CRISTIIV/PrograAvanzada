@@ -12,11 +12,11 @@ public class Usuario {
     private int totalSkins;
     private String nombreSkins;
     private String region;
-    private ListaPersonajePoseido ListaPersonajesPoseidos;
     private boolean bloqueado;
+    private ListaPersonajePoseido ListaPersonajesPoseidos;
 
 
-    public Personaje(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region, boolean bloqueado) {
+    public Usuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region) {
         this.nombreCuenta = nombreCuenta;
         this.password = password;
         this.nick = nick;
@@ -28,7 +28,7 @@ public class Usuario {
         this.nombreSkins = nombreSkins;
         this.region = region;
         ListaPersonajesPoseidos = new ListaPersonajePoseido(156);
-        this.bloqueado = bloqueado;
+        
     }
 
     public String getNombreCuenta() {
@@ -91,17 +91,16 @@ public class Usuario {
     public void setRegion(String region) {
         this.region = region;
     }
-    public ListaPersonajePoseido getListaPersonajesPoseidos() {
-        return ListaPersonajesPoseidos;
-    }
-    public void setListaPersonajesPoseidos(ListaPersonajePoseido listaPersonajesPoseidos) {
-        ListaPersonajesPoseidos = listaPersonajesPoseidos;
-    }
     public boolean isBloqueado() {
         return bloqueado;
     }
     public void setBloqueado(boolean bloqueado) {
         this.bloqueado = bloqueado;
     }
-
+    public ListaPersonajePoseido getListaPersonajesPoseidos() {
+        return ListaPersonajesPoseidos;
+    }
+    public void setListaPersonajesPoseidos(ListaPersonajePoseido listaPersonajesPoseidos) {
+        ListaPersonajesPoseidos = listaPersonajesPoseidos;
+    }
 }
