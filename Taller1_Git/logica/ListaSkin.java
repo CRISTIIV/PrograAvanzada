@@ -57,6 +57,16 @@ public class ListaSkin {
         return null;
     }
 
+    public Skin buscarPorNombreSkin(String nombreSkin){
+        for (int i = 0; i < cantidad; i++){
+            Skin skin = listaSkins[i];
+            if (skin.getNombreSkin().equals(nombreSkin)){
+                return skin;
+            }
+        }
+        return null;
+    }
+
     public Skin buscarPorI(int i){
         Skin skin = listaSkins[i];
         if (skin!=null){
