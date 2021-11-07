@@ -22,25 +22,45 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
     void agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         if (usuario == null){
-            Usuario usuarioNuevo = new Usuario(nombreCuenta,password,nick,nivel,rp,totalPersonajes,nombrePersonajes,totalSkins,nombreSkins,region);
+            Usuario usuarioNuevo = new Usuario(nombreCuenta, password, nick, nivel, rp, totalPersonajes, nombrePersonajes, totalSkins, nombreSkins, region);
             if (!usuarios.insertar(usuarioNuevo)){
                 throw new NullPointerException("La lista de cuentas está llena");
             }
-        } else {
-            throw new NullPointerException("La cuenta ya existe");
+        }
+        else{
+            throw new NullPointerException("La cuenta ya existe.");
         }
     }
 
-    boolean agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int estadisticas){
-
+    void agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int precioPersonaje, int recaudacionPersonaje){
+        Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
+        if (personaje == null){
+            Personaje personajeNuevo = new Personaje(nombrePersonaje, rol, totalSkins, nombreSkins, precioPersonaje, recaudacionPersonaje);
+            if (!personajes.insertar(personajeNuevo)){
+                throw new NullPointerException("La lista de personajes ya está llena, para ingresar nuevos personajes debe hacerlo manualmente.");
+            }
+        }
+        else{
+            throw new NullPointerException("El personaje ya existe.");
+        }
     }
 
+    //FALTA
     void setRecaudacionPersonaje(String nombrePersonaje, int estadisticas){
 
     }
 
-    boolean agregarSkin(String nombreSkin, String nombrePersonaje, String calidad){
-
+    void agregarSkin(String nombreSkin, String calidad, int precioSkin, String nombrePersonaje){
+        Skin skin = skins.buscarPorNombrePersonaje(nombrePersonaje);
+        if (skin == null){
+            Skin skinNueva = new Skin(nombreSkin, calidad, precioSkin, nombrePersonaje);
+            if (!skins.insertar(skinNueva)){
+                throw new NullPointerException("La lista de skins ya está llena, para ingresar nuevas skins debe hacerlo manualmente.");
+            }
+        }
+        else{
+            throw new NullPointerException("La skin ya existe.");
+        }
     }
 
     void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta){
