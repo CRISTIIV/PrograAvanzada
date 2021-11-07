@@ -106,7 +106,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
             if (usuario != null && usuario.getPassword().equals(password)){
                 return "Bienvenido!";
             }
-            return "Ingresaste mal la password";
+            return "Ingresaste mal la contrasena";
         }
     }
 
