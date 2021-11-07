@@ -63,9 +63,15 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    //FALTA
     void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta){
+        Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
+        Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
 
+        if (usuario == null || personaje == null){
+            throw new NullPointerException("Alguno de los datos ingresados no existe");
+        } else {
+            usuario.getListaPersonajesPoseidos().insertar(personaje);
+        }
     }
 
     //FALTA
