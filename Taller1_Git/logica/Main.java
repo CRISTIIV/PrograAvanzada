@@ -12,5 +12,298 @@ public class Main {
         lecturaCuentas(sistema);
         lecturaPersonajes(sistema);
         lecturaEstadisticas(sistema);
+
+        while(true){
+            System.out.println("Ingrese su cuenta de usuario: ");
+            String nombreCuenta = scanner.next();
+            System.out.println("Ingrese su contrasena: ");
+            String password = scanner.next();
+
+            mainMenu(sistema, nombreCuenta, password);
+            System.out.println("Desea cerrar el sistema? (si-no)");      
+            String cerrar = scanner.next().toLowerCase();
+            if(cerrar.equals("si"))break;      
+        }
+        cierreSistema(sistema);
+        scanner.close();
     }
+
+
+    //LISTO
+    public static void mainMenu(SistemaRitoGames sistema, String nombreCuenta, String password){
+        Scanner sc = new Scanner(System.in);
+        if(nombreCuenta.equals("ADMIN")) {
+            if (password.equals("ADMIN")){
+                menuAdmin(sistema);
+            } else {
+                System.out.println("Ingresaste mal la contrasena");
+            }
+        }else{
+            String validacion = sistema.iniciarSesion(nombreCuenta, password);
+            switch (validacion) {
+                case "La cuenta ingresada no existe, ¿desea registrase?"://ACA CAMBIÉ POR EL TEXTO DEL return EN EL INICIAR SESION DEL TALLER NUEVO
+                    System.out.println("La cuenta ingresada no existe, ¿desea registrase?(si-no)");
+                    String registro = sc.next().toLowerCase();
+                    if(registro.equals("si")){
+                        System.out.println("Ingresa el nombre de tu nueva cuenta: ");
+                        String nombreCuentaNueva = sc.next();
+                        
+                        System.out.println("Ingrese su nueva contrasena: ");
+                        String passwordNueva = sc.next();
+                        
+                        System.out.println("Ingrese su nuevo nick: ");
+                        String nickNuevo = sc.next();
+
+                        System.out.println("Ingrese su region: ");
+                        String regionNueva = sc.next();
+                        regionNueva = hacerMayuscula(regionNueva);
+
+                        int nivelInicial = 0;
+                        int rpInicial = 0;
+                        int totalPersonajesInicial = 0;
+                        String nombrePersonajesInicial = "";
+                        int totalSkinsInicial = 0;
+                        String nombreSkinsInicial = "";
+
+                        try {
+                            sistema.agregarUsuario(nombreCuentaNueva, passwordNueva, nickNuevo, nivelInicial, rpInicial, totalPersonajesInicial, nombrePersonajesInicial, totalSkinsInicial, nombreSkinsInicial, regionNueva);
+                            System.out.println("Se ha registrado con exito!");
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }
+                    break;
+
+                case "Bienvenido!":
+                    menuCliente(rut,sistema);
+                    break;
+                    
+                case "Ingresaste mal la contrasena":
+                    System.out.println("La contrasena se ingreso incorrectamente");
+                    break;
+                default:
+                    System.out.println("Salio default");
+                    
+            }
+        }    
+    }
+    
+    //EDITAR
+    public static void menuAdmin(SistemaSonRisas sistema){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Bienvenido ADMINISTRADOR, Que desea realizar? ");
+        System.out.println("\n1) Desplegar recaudacion de ventas por rol");
+        System.out.println("2) Desplegar recaudacion total de ventas por region");
+        System.out.println("3) Desplegar recaudacion de ventas por personaje");
+        System.out.println("4) Desplegar la cantidad de personajes por rol existente");
+        System.out.println("5) Agregar un personaje al juego");
+        System.out.println("6) Agregar una skin a un personaje del juego");
+        System.out.println("7) Bloquear un jugador");
+        System.out.println("8) Desplegar todas las cuentas de mayor a menor");
+        System.out.println("\nDigite 'salir' para salir");
+        while(true){
+            String opcion = sc.next();
+            Boolean salir = false;
+            switch (opcion) {
+                case "1":
+                    System.out.println(sistema.obtenerHigienizados());
+                    System.out.println("Ingrese la clinica en la que se detecto el cliente COVID");
+                    String clinica = sc.next();
+                    clinica = hacerMayuscula(clinica);
+                    try {
+                        sistema.hacerInsalubre(clinica);
+                        sistema.vaciarCitas(clinica);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage()); 
+                    }
+                    break;
+                
+                case "2":
+                    System.out.println(sistema.obtenerSueldosDentistas());
+                    break;
+                
+                case "3":
+                    System.out.println(sistema.obtenerGanancias());
+                    break;
+            
+                
+                case "4":
+                    System.out.println(sistema.obtenerInsalubres());
+                    System.out.println("Ingrese la clinica a la cual desea higienizar");
+                    String ciudad = sc.next();
+                    ciudad = hacerMayuscula(ciudad);
+                    try {
+                        sistema.higienizarClinica(ciudad);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage()); 
+                    }
+                    break;
+                    
+                case "5":
+                    System.out.println("Ingrese el nombre del dentista");
+                    String nombre = sc.next();
+
+                    System.out.println("Ingrese el apellido del dentista");
+                    String apellido = sc.next();
+
+                    System.out.println("Ingrese el rut del dentista");
+                    String rut = sc.next();
+                    rut = validarRut(rut);
+
+                    System.out.println("Ingrese la contrasena del dentista");
+                    String contrasena = sc.next();
+
+                    System.out.println("Ingrese el saldoBase del dentista");
+                    int saldoBase = sc.nextInt();
+
+                    System.out.println("Ingrese las comisiones del dentista");
+                    int comisiones = sc.nextInt();
+
+                    System.out.println("Ingrese la ciudad del dentista");
+                    String ciudadRegistro = sc.next();
+                    ciudadRegistro = hacerMayuscula(ciudadRegistro);
+
+                    System.out.println("Ingrese los anos de experiencia del dentista");
+                    int anosExperiencia = sc.nextInt();
+
+                    try {
+                        sistema.agregarDentista(nombre, apellido, rut, contrasena, saldoBase, comisiones, ciudadRegistro, anosExperiencia);
+                        try {
+                            sistema.asociarClinicaDentista(ciudadRegistro, rut);
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage()); 
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                    
+                case "salir":
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("La opcion ingresada no es valida");
+            }
+            if(salir)break;
+            System.out.println("1) Covid detectado");
+            System.out.println("2) Mostrar sueldos dentistas");
+            System.out.println("3) Mostrar ganancias");
+            System.out.println("4) Higienizar clinica");
+            System.out.println("5) Contratar dentista");
+            System.out.println("Digite 'salir' para salir");
+        }
+    }
+
+    //EDITAR
+    public static void menuCliente(String rut,SistemaSonRisas sistema) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Bienvenido, Que desea realizar");
+        System.out.println("1) Mostrar citas agendadas");
+        System.out.println("2) Agendar cita");
+        System.out.println("3) Completar cita");
+        System.out.println("4) Cancelar cita");
+        System.out.println("Digite 'salir' para salir");
+        while(true){
+            String opcion = sc.next();
+            Boolean salir = false;
+            switch (opcion) {
+                case "1":
+                    try {
+                        System.out.println(sistema.obtenerCitasSegunRutCliente(rut));
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage()); 
+                    }
+                    break;
+                
+                case "2":
+                    try {
+                        String codigo = sistema.agendarCita(rut);
+                        if(codigo!=null){
+                            System.out.println("Ingrese la operacion");
+                            sc.nextLine(); 
+                            String operacionAgendada = sc.nextLine();
+                            operacionAgendada = hacerMayuscula(operacionAgendada);
+                            System.out.println("Ingrese la fecha (Formato:dd/mm/yyyy)");
+                            String fechaAgendada = sc.next();
+                            sistema.establecerOperacionYFechaEnCita(codigo, operacionAgendada, fechaAgendada);
+                            System.out.println("La cita se agendo correctamente");
+                        } else {
+                            System.out.println("La clinica no esta higienizada");
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                
+                case "3":
+                    try {
+                        String citas = sistema.obtenerCitasSegunRutCliente(rut);
+                        if (!citas.equals("No cuentas con citas")){
+                            System.out.println(citas);
+                            String citaParaCompletar = sc.next();
+                            sistema.completarCita(rut, citaParaCompletar);
+                            sistema.eliminarCitaCliente(citaParaCompletar, rut);
+                            System.out.println("Se completo la cita correctamente");
+                        } else{
+                            System.out.println(citas);
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage()); 
+                    }
+                    break;
+            
+                
+                case "4":
+                    try {
+                        String citas = sistema.obtenerCitasSegunRutCliente(rut);
+                        if (!citas.equals("No cuentas con citas")){
+                            System.out.println(citas);
+                            String citaParaEliminar = sc.next();
+                            sistema.eliminarCitaCliente(citaParaEliminar, rut);
+                            System.out.println("Se elimino la cita correctamente");
+                        } else{
+                            System.out.println(citas);
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage()); 
+                    }
+                    break;
+                    
+                case "salir":
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("La opcion ingresada no es valida");
+            }
+            if(salir)break;
+            System.out.println("1) Mostrar citas agendadas");
+            System.out.println("2) Agendar cita");
+            System.out.println("3) Completar cita");
+            System.out.println("4) Cancelar cita");
+            System.out.println("Digite 'salir' para salir");
+        }
+
+    }
+    
+    //EDITAR
+    private static void cierreSistema(SistemaSonRisas sistema)  {
+        try {
+            sobreEscribirCitas(sistema);
+            sobreEscribirClinicas(sistema);
+            sobreEscribirClientes(sistema);
+            sobreEscribirDentistas(sistema);
+        } catch (Exception e) {
+            System.out.println("Hubo un error en el cierre de sistema, comprobar archivos de texto");
+        }
+        
+    }
+
+    public static String hacerMayuscula(String txt){
+        String original = txt;
+        String stringFinal = txt.substring(0,1).toUpperCase();
+        stringFinal += original.substring(1,original.length());
+        return stringFinal;
+    }
+
+
 }
