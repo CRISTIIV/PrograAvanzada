@@ -160,75 +160,39 @@ public class Main {
     public static void menuCliente(String rut,SistemaSonRisas sistema) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Bienvenido, Que desea realizar");
-        System.out.println("1) Mostrar citas agendadas");
-        System.out.println("2) Agendar cita");
-        System.out.println("3) Completar cita");
-        System.out.println("4) Cancelar cita");
-        System.out.println("Digite 'salir' para salir");
+        System.out.println("\n1) Desplegar skins disponibles para comprar");
+        System.out.println("2) Comprar Skin");
+        System.out.println("3) Comprar Personaje");
+        System.out.println("4) Mostrar inventario");
+        System.out.println("5) Recargar RP");
+        System.out.println("6) Mostrar datos del usuario");
+        System.out.println("\nDigite 'salir' para salir");
         while(true){
             String opcion = sc.next();
             Boolean salir = false;
             switch (opcion) {
                 case "1":
-                    try {
-                        System.out.println(sistema.obtenerCitasSegunRutCliente(rut));
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage()); 
-                    }
+                
                     break;
                 
                 case "2":
-                    try {
-                        String codigo = sistema.agendarCita(rut);
-                        if(codigo!=null){
-                            System.out.println("Ingrese la operacion");
-                            sc.nextLine(); 
-                            String operacionAgendada = sc.nextLine();
-                            operacionAgendada = hacerMayuscula(operacionAgendada);
-                            System.out.println("Ingrese la fecha (Formato:dd/mm/yyyy)");
-                            String fechaAgendada = sc.next();
-                            sistema.establecerOperacionYFechaEnCita(codigo, operacionAgendada, fechaAgendada);
-                            System.out.println("La cita se agendo correctamente");
-                        } else {
-                            System.out.println("La clinica no esta higienizada");
-                        }
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
+                   
                     break;
                 
                 case "3":
-                    try {
-                        String citas = sistema.obtenerCitasSegunRutCliente(rut);
-                        if (!citas.equals("No cuentas con citas")){
-                            System.out.println(citas);
-                            String citaParaCompletar = sc.next();
-                            sistema.completarCita(rut, citaParaCompletar);
-                            sistema.eliminarCitaCliente(citaParaCompletar, rut);
-                            System.out.println("Se completo la cita correctamente");
-                        } else{
-                            System.out.println(citas);
-                        }
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage()); 
-                    }
+
                     break;
             
-                
                 case "4":
-                    try {
-                        String citas = sistema.obtenerCitasSegunRutCliente(rut);
-                        if (!citas.equals("No cuentas con citas")){
-                            System.out.println(citas);
-                            String citaParaEliminar = sc.next();
-                            sistema.eliminarCitaCliente(citaParaEliminar, rut);
-                            System.out.println("Se elimino la cita correctamente");
-                        } else{
-                            System.out.println(citas);
-                        }
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage()); 
-                    }
+
+                    break;
+
+                case "5":
+
+                    break;
+
+                case "6":
+            
                     break;
                     
                 case "salir":
@@ -238,11 +202,13 @@ public class Main {
                     System.out.println("La opcion ingresada no es valida");
             }
             if(salir)break;
-            System.out.println("1) Mostrar citas agendadas");
-            System.out.println("2) Agendar cita");
-            System.out.println("3) Completar cita");
-            System.out.println("4) Cancelar cita");
-            System.out.println("Digite 'salir' para salir");
+            System.out.println("\n1) Desplegar skins disponibles para comprar");
+            System.out.println("2) Comprar Skin");
+            System.out.println("3) Comprar Personaje");
+            System.out.println("4) Mostrar inventario");
+            System.out.println("5) Recargar RP");
+            System.out.println("6) Mostrar datos del usuario");
+            System.out.println("\nDigite 'salir' para salir");
         }
 
     }
