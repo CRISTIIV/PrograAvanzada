@@ -63,94 +63,117 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
+    //FALTA
     void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta){
 
     }
 
+    //FALTA
     void asociarSkinPersonaje(String nombreSkin, String nombrePersonaje){
 
     }
 
+    //FALTA
     void asociarSkinUsuario(String nombreSkin, String nombreCuenta){
 
     }
 
+    //FALTA
     String iniciarSesion(String nombreCuenta, String password){
 
     }
 
+    //FALTA
     boolean registrarUsuario(String nombreCuenta, String nick, String password, String region){
 
     }
 
+    //FALTA
     boolean cambiarPassword(String oldPassword, String newPassword){
 
     }
 
+    //FALTA
     String obtenerDatosUsuario(){
 
     }
 
+    //FALTA
     String obtenerDatosPersonajes(){
 
     }
 
+    //FALTA
     String obtenerDatosSkins(){
 
     }
 
+    //FALTA
     String obtenerPersonajeSegunUsuario(String nombreCuenta){
 
     }
 
+    //FALTA
     String obtenerSkinSegunUsuario(String nombreCuenta){
 
     }
 
+    //FALTA
     String obtenerSkinSegunPersonaje(String nombrePersonaje){
 
     }
 
+    //FALTA
     void comprarPersonaje(String nombreCuenta, String nombrePersonaje){
 
     }
 
+    //FALTA
     void comprarSkin(String nombreCuenta, String nombrePersonaje, String nombreSkin){
 
     }
 
+    //FALTA
     void recargarRP(String nombreCuenta, int rp){
 
     }
 
+    //FALTA
     String obtenerEstadisticasPersonaje(String nombrePersonaje){
 
     }
 
+    //FALTA
     String obtenerRecaudacionPorRol(){
 
     }
 
+    //FALTA
     String obtenerRecaudacionPorRegion(){
 
     }
 
+    //FALTA
     String obtenerCantPersonajesPorRol(){
 
     }
 
+    //FALTA
     String cuentasMayMen(){
 
     }
 
+    //FALTA
     boolean agregarNuevaSkin(String nombrePersonaje, String nombreSkin, String calidad){
 
     }
 
+    //FALTA
     boolean agregarNuevoPersonaje(String nombrePersonaje, String rol, int numeroSkins){
 
     }
 
+    //FALTA
     void bloqueoUsuario(String nombreCuenta){
         
     }
