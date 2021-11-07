@@ -88,7 +88,7 @@ public class Main {
     }
     
     //EDITAR
-    public static void menuAdmin(SistemaSonRisas sistema){
+    public static void menuAdmin(SistemaRitoGames sistema){
         Scanner sc = new Scanner(System.in);
         System.out.println("Bienvenido ADMINISTRADOR, Que desea realizar? ");
         System.out.println("\n1) Desplegar recaudacion de ventas por rol");
@@ -156,7 +156,7 @@ public class Main {
     }
 
     //EDITAR
-    public static void menuCliente(String rut,SistemaSonRisas sistema) {
+    public static void menuCliente(String nombreCuenta,SistemaRitoGames sistema) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Bienvenido, Que desea realizar");
         System.out.println("\n1) Desplegar skins disponibles para comprar");
@@ -165,6 +165,7 @@ public class Main {
         System.out.println("4) Mostrar inventario");
         System.out.println("5) Recargar RP");
         System.out.println("6) Mostrar datos del usuario");
+        System.out.println("7) Cambiar contrasena");
         System.out.println("\nDigite 'salir' para salir");
         while(true){
             String opcion = sc.next();
@@ -187,18 +188,44 @@ public class Main {
                     break;
 
                 case "5":
-
+                    System.out.println("Ingrese la cantidad de rp a agregar: ");
+                    int rp = sc.nextInt();
+                    try {
+                        sistema.recargarRP(nombreCuenta, rp);
+                        System.out.println("Se agregaron: " +rp+ " a la cuenta.");
+                    } catch(Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case "6":
             
                     break;
                     
+                case "7":
+                    System.out.println("Ingrese su contrasena actual");
+                    String oldPassword = sc.next();
+                    System.out.println("Ingrese la nueva contrasena");
+                    String newPassword = sc.next();
+                    System.out.println("Confirme la nueva contrasena");
+                    String newPasswordConf = sc.next();
+                    if(sistema.iniciarSesion(nombreCuenta,oldPassword).equals("Bienvenido!") && newPassword.equals(newPasswordConf)) {
+                        try {
+                            sistema.cambiarPassword(nombreCuenta,oldPassword,newPassword);
+                            System.out.println("Se cambio la contrasena con exito");
+                        }catch(Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }else {
+                        System.out.println("Ingresaste mal alguna contrasena");
+                    }
+                    break;
+
                 case "salir":
                     salir = true;
                     break;
                 default:
-                    System.out.println("La opcion ingresada no es valida");
+                    System.out.println("La opcion ingresada no es valida.");
             }
             if(salir)break;
             System.out.println("\n1) Desplegar skins disponibles para comprar");
@@ -207,12 +234,13 @@ public class Main {
             System.out.println("4) Mostrar inventario");
             System.out.println("5) Recargar RP");
             System.out.println("6) Mostrar datos del usuario");
+            System.out.println("7) Cambiar contrasena");
             System.out.println("\nDigite 'salir' para salir");
         }
 
     }
     
-    private static void cierreSistema(SistemaSonRisas sistema)  {
+    private static void cierreSistema(SistemaRitoGames sistema)  {
         try {
             sobreEscribirCuentas(sistema);
             sobreEscribirPersonajes(sistema);
