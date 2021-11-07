@@ -103,4 +103,17 @@ public class Usuario {
     public void setListaPersonajesPoseidos(ListaPersonajePoseido listaPersonajesPoseidos) {
         ListaPersonajesPoseidos = listaPersonajesPoseidos;
     }
+    public String formatoEscritura(){
+        String ultimos3 = password.substring(Math.max(0, text.length() - 3));
+        String passwordConf = "******"+ultimos3;
+        return nombreCuenta+","+nick+","+passwordConf+"\n";
+    }
+
+    public void agregarRp(double rp) {
+    	this.rp += rp;
+    }
+    
+    public void disminuirRp(double saldo) {
+    	this.rp -= rp;
+    }
 }
