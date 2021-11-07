@@ -74,9 +74,15 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    //FALTA
     void asociarSkinPersonaje(String nombreSkin, String nombrePersonaje){
+        Skin skin = skins.buscarPorNombreSkin(nombreSkin);
+        Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
 
+        if (skin == null || personaje == null){
+            throw new NullPointerException("Alguno de los datos ingresados no existe");
+        } else {
+            personaje.getListaSkins().insertar(skin);
+        }
     }
 
     //FALTA
