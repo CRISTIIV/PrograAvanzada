@@ -19,7 +19,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         personajesPoseidos = new ListaPersonajePoseido(1000);
     }
     @Override
-    void agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region){
+    public void agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         if (usuario == null){
             Usuario usuarioNuevo = new Usuario(nombreCuenta, password, nick, nivel, rp, totalPersonajes, nombrePersonajes, totalSkins, nombreSkins, region);
@@ -32,7 +32,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    void agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int precioPersonaje, int recaudacionPersonaje){
+    public void agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int precioPersonaje, int recaudacionPersonaje){
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
         if (personaje == null){
             Personaje personajeNuevo = new Personaje(nombrePersonaje, rol, totalSkins, nombreSkins, precioPersonaje, recaudacionPersonaje);
@@ -46,11 +46,11 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
     }
 
     //FALTA
-    void setRecaudacionPersonaje(String nombrePersonaje, int estadisticas){
+    public void setRecaudacionPersonaje(String nombrePersonaje, int estadisticas){
 
     }
 
-    void agregarSkin(String nombreSkin, String calidad, int precioSkin, String nombrePersonaje){
+    public void agregarSkin(String nombreSkin, String calidad, int precioSkin, String nombrePersonaje){
         Skin skin = skins.buscarPorNombrePersonaje(nombrePersonaje);
         if (skin == null){
             Skin skinNueva = new Skin(nombreSkin, calidad, precioSkin, nombrePersonaje);
@@ -63,7 +63,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta){
+    public void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
 
@@ -74,7 +74,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    void asociarSkinPersonaje(String nombreSkin, String nombrePersonaje){
+    public void asociarSkinPersonaje(String nombreSkin, String nombrePersonaje){
         Skin skin = skins.buscarPorNombreSkin(nombreSkin);
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
 
@@ -85,7 +85,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    void asociarSkinUsuario(String nombreSkin, String nombreCuenta){
+    public void asociarSkinUsuario(String nombreSkin, String nombreCuenta){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         Skin skin = skins.buscarPorNombreSkin(nombreSkin);
 
@@ -96,7 +96,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    String iniciarSesion(String nombreCuenta, String password){
+    public String iniciarSesion(String nombreCuenta, String password){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
 
         if (usuario == null){
@@ -110,98 +110,99 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    //ESTE ESTOY VIENDO SI DEJARLO, PORQUE ENCONTRÉ UNA FORMA DE SOLO UTILIZAR EL "agregarUsuario".
-    boolean registrarUsuario(String nombreCuenta, String nick, String password, String region){
-    
+    public void cambiarPassword(String nombreCuenta, String oldPassword, String newPassword){
+        String validacion = iniciarSesion(nombreCuenta,oldPassword);
+		Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
+		if(validacion.equals("Bienvenido!")) {
+			usuario.setPassword(newPassword);
+		} else if (validacion.equals("Ingresaste mal la contrasena")) {
+			throw new NullPointerException("Password ingresada incorrectamente");
+		} else {
+			throw new NullPointerException("La cuenta ingresada no existe");	
+		}
+    }
+
+    public String obtenerDatosUsuario(String nombreCuenta){
+        Usuario
     }
 
     //FALTA
-    boolean cambiarPassword(String oldPassword, String newPassword){
-
-    }
-
-    //FALTA
-    String obtenerDatosUsuario(){
-
-    }
-
-    //FALTA
-    String obtenerDatosPersonajes(){
-
-    }
-
-    //FALTA
-    String obtenerDatosSkins(){
+    public String obtenerDatosPersonajes(){
 
     }
 
     //FALTA
-    String obtenerPersonajeSegunUsuario(String nombreCuenta){
+    public String obtenerDatosSkins(){
 
     }
 
     //FALTA
-    String obtenerSkinSegunUsuario(String nombreCuenta){
+    public String obtenerPersonajeSegunUsuario(String nombreCuenta){
 
     }
 
     //FALTA
-    String obtenerSkinSegunPersonaje(String nombrePersonaje){
+    public String obtenerSkinSegunUsuario(String nombreCuenta){
 
     }
 
     //FALTA
-    void comprarPersonaje(String nombreCuenta, String nombrePersonaje){
+    public String obtenerSkinSegunPersonaje(String nombrePersonaje){
 
     }
 
     //FALTA
-    void comprarSkin(String nombreCuenta, String nombrePersonaje, String nombreSkin){
+    public void comprarPersonaje(String nombreCuenta, String nombrePersonaje){
 
     }
 
     //FALTA
-    void recargarRP(String nombreCuenta, int rp){
+    public void comprarSkin(String nombreCuenta, String nombrePersonaje, String nombreSkin){
+
+    }
+
+    public void recargarRP(String nombreCuenta, int rp){
+        Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
+        usuario.agregarRp(rp);
+    }
+
+    //FALTA
+    public String obtenerEstadisticasPersonaje(String nombrePersonaje){
 
     }
 
     //FALTA
-    String obtenerEstadisticasPersonaje(String nombrePersonaje){
+    public String obtenerRecaudacionPorRol(){
 
     }
 
     //FALTA
-    String obtenerRecaudacionPorRol(){
+    public String obtenerRecaudacionPorRegion(){
 
     }
 
     //FALTA
-    String obtenerRecaudacionPorRegion(){
+    public String obtenerCantPersonajesPorRol(){
 
     }
 
     //FALTA
-    String obtenerCantPersonajesPorRol(){
+    public String cuentasMayMen(){
 
     }
 
     //FALTA
-    String cuentasMayMen(){
+    public boolean agregarNuevaSkin(String nombrePersonaje, String nombreSkin, String calidad){
 
     }
 
     //FALTA
-    boolean agregarNuevaSkin(String nombrePersonaje, String nombreSkin, String calidad){
+    public boolean agregarNuevoPersonaje(String nombrePersonaje, String rol, int numeroSkins){
 
     }
 
     //FALTA
-    boolean agregarNuevoPersonaje(String nombrePersonaje, String rol, int numeroSkins){
-
-    }
-
-    //FALTA
-    void bloqueoUsuario(String nombreCuenta){
+    public void bloqueoUsuario(String nombreCuenta){
         
     }
     
