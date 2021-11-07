@@ -106,76 +106,35 @@ public class Main {
             Boolean salir = false;
             switch (opcion) {
                 case "1":
-                    System.out.println(sistema.obtenerHigienizados());
-                    System.out.println("Ingrese la clinica en la que se detecto el cliente COVID");
-                    String clinica = sc.next();
-                    clinica = hacerMayuscula(clinica);
-                    try {
-                        sistema.hacerInsalubre(clinica);
-                        sistema.vaciarCitas(clinica);
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage()); 
-                    }
+                   
                     break;
                 
                 case "2":
-                    System.out.println(sistema.obtenerSueldosDentistas());
+                   
                     break;
                 
                 case "3":
-                    System.out.println(sistema.obtenerGanancias());
+                  
                     break;
-            
                 
                 case "4":
-                    System.out.println(sistema.obtenerInsalubres());
-                    System.out.println("Ingrese la clinica a la cual desea higienizar");
-                    String ciudad = sc.next();
-                    ciudad = hacerMayuscula(ciudad);
-                    try {
-                        sistema.higienizarClinica(ciudad);
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage()); 
-                    }
+                   
                     break;
                     
                 case "5":
-                    System.out.println("Ingrese el nombre del dentista");
-                    String nombre = sc.next();
+                   
+                    break;
 
-                    System.out.println("Ingrese el apellido del dentista");
-                    String apellido = sc.next();
+                case "6":
 
-                    System.out.println("Ingrese el rut del dentista");
-                    String rut = sc.next();
-                    rut = validarRut(rut);
+                    break;
 
-                    System.out.println("Ingrese la contrasena del dentista");
-                    String contrasena = sc.next();
+                case "7":
 
-                    System.out.println("Ingrese el saldoBase del dentista");
-                    int saldoBase = sc.nextInt();
+                    break;
+                
+                case "8":
 
-                    System.out.println("Ingrese las comisiones del dentista");
-                    int comisiones = sc.nextInt();
-
-                    System.out.println("Ingrese la ciudad del dentista");
-                    String ciudadRegistro = sc.next();
-                    ciudadRegistro = hacerMayuscula(ciudadRegistro);
-
-                    System.out.println("Ingrese los anos de experiencia del dentista");
-                    int anosExperiencia = sc.nextInt();
-
-                    try {
-                        sistema.agregarDentista(nombre, apellido, rut, contrasena, saldoBase, comisiones, ciudadRegistro, anosExperiencia);
-                        try {
-                            sistema.asociarClinicaDentista(ciudadRegistro, rut);
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage()); 
-                        }
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
                     break;
                     
                 case "salir":
@@ -185,12 +144,15 @@ public class Main {
                     System.out.println("La opcion ingresada no es valida");
             }
             if(salir)break;
-            System.out.println("1) Covid detectado");
-            System.out.println("2) Mostrar sueldos dentistas");
-            System.out.println("3) Mostrar ganancias");
-            System.out.println("4) Higienizar clinica");
-            System.out.println("5) Contratar dentista");
-            System.out.println("Digite 'salir' para salir");
+            System.out.println("\n1) Desplegar recaudacion de ventas por rol");
+            System.out.println("2) Desplegar recaudacion total de ventas por region");
+            System.out.println("3) Desplegar recaudacion de ventas por personaje");
+            System.out.println("4) Desplegar la cantidad de personajes por rol existente");
+            System.out.println("5) Agregar un personaje al juego");
+            System.out.println("6) Agregar una skin a un personaje del juego");
+            System.out.println("7) Bloquear un jugador");
+            System.out.println("8) Desplegar todas las cuentas de mayor a menor");
+            System.out.println("\nDigite 'salir' para salir");
         }
     }
 
