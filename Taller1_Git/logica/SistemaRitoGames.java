@@ -18,9 +18,7 @@ public interface SistemaRitoGames {
 
     String iniciarSesion(String nombreCuenta, String password);
 
-    boolean registrarUsuario(String nombreCuenta, String nick, String password, String region);
-
-    boolean cambiarPassword(String oldPassword, String newPassword);
+    void cambiarPassword(String nombreCuenta, String oldPassword, String newPassword);
 
     String obtenerDatosUsuario();
 
