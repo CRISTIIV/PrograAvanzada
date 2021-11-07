@@ -4,11 +4,11 @@ public interface SistemaRitoGames {
     
     void agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region);
 
-    boolean agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int estadisticas);
+    void agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int precioPersonaje, int recaudacionPersonaje);
 
     void setRecaudacionPersonaje(String nombrePersonaje, int estadisticas);
 
-    boolean agregarSkin(String nombreSkin, String nombrePersonaje, String calidad);
+    boolean agregarSkin(String nombreSkin, String calidad, int precioSkin, String nombrePersonaje);
 
     void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta);
 
