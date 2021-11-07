@@ -96,9 +96,18 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    //FALTA
     String iniciarSesion(String nombreCuenta, String password){
+        Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
 
+        if (usuario == null){
+            return "La cuenta ingresada no existe, ¿desea registrase?";
+        }
+        else{
+            if (usuario != null && usuario.getPassword().equals(password)){
+                return "Bienvenido!";
+            }
+            return "Ingresaste mal la password";
+        }
     }
 
     //FALTA
