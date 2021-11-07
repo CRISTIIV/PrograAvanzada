@@ -110,9 +110,9 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    //FALTA
+    //ESTE ESTOY VIENDO SI DEJARLO, PORQUE ENCONTRÉ UNA FORMA DE SOLO UTILIZAR EL "agregarUsuario".
     boolean registrarUsuario(String nombreCuenta, String nick, String password, String region){
-
+    
     }
 
     //FALTA
