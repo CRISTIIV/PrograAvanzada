@@ -63,4 +63,13 @@ public class ListaUsuario {
         return null;
     }
 
+    public String formatoEscritura(){
+        String salida = "";
+        for (int i = 0; i<cantidad; i++){
+            Usuario usuario= listaUsuarios[i];
+            salida += usuario.formatoEscritura();
+        }
+        return salida;
+    }
+
 }
