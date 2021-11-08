@@ -279,7 +279,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         return personajes.formatoRecRol();
     }
 
-    //FALTA
+    //FALTA MODIFICAR LOS SUBPROGRAMAS DE LAS CLASES Y ADAPTAR ESTE.
     public String obtenerRecaudacionPorRegion(){
 
     }
