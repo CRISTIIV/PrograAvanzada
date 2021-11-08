@@ -163,7 +163,7 @@ public class Usuario {
         String passwordConf = "******"+ultimos3;
         return "Nombre de la cuenta: "nombreCuenta+"\nNick del usuario: "+nick+"\nUltimos caracteres de la contrasena: "+passwordConf+"\n";
     }
-
+    //ARREGLARLO
     public String recaudacionRegion(){
         int las = 0;
         int lan = 0;
