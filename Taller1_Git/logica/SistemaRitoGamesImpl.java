@@ -281,7 +281,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
 
     //FALTA MODIFICAR LOS SUBPROGRAMAS DE LAS CLASES Y ADAPTAR ESTE.
     public String obtenerRecaudacionPorRegion(){
-
+        return.usuarios.formatoRecRegion();
     }
 
     //FALTA
