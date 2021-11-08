@@ -13,6 +13,8 @@ public class PersonajePoseido {
                                                                       //PERO QUEDARÍA VACÍO ACÁ, ENTONCES NO SÉ:(
         this.propietario = propietario;
         this.personaje = personaje;
+        propietario = null;
+        personaje = null;
         listaSkinsPoseidos = new ListaSkin(500);
     }
 
