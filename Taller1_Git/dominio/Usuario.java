@@ -147,11 +147,14 @@ public class Usuario {
         return nombreCuenta+","+password+","+nick+","+nivel+","+rp+","+texto+region+"\n";
     }
 
-    public void agregarRp(double rp) {
+    public void agregarRp(int rp) {
     	this.rp += rp;
     }
+    public void aumentarNivel(int nivel){
+        this.nivel += nivel;
+    }
     
-    public void disminuirRp(double saldo) {
+    public void disminuirRp(int rp) {
     	this.rp -= rp;
     }
 
