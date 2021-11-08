@@ -77,5 +77,20 @@ public class ListaPersonaje {
         }
         return false;
     }
+    public String formatoEscritura(){
+        String salida = "";
+        for (int i = 0; i<cantidad; i++){
+            Personaje personaje = listaPersonajes[i];
+            salida += personaje.formatoEscritura();
+        }
+        return salida;
+    }
+    public String formatoEstadistica(){
+        String salida = "";
+        for (int i = 0; i < cantidad; i++){
+            Personaje personaje = listaPersonajes[i];
+            salida += personaje.getNombrePersonaje()+","+personaje.formatoEstadistica();
+        }
+    }
 
 }
