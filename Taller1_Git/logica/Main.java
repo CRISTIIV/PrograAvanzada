@@ -199,7 +199,7 @@ public class Main {
                     break;
 
                 case "6":
-            
+                    System.out.println(sistema.obtenerDatosUsuario(nombreCuenta));
                     break;
                     
                 case "7":
