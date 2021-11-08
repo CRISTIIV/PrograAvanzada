@@ -93,11 +93,31 @@ public class ListaPersonaje {
         }
     }
     public String formatoRecRol(){
+        int sup = 0;
+        int adc = 0;
+        int top = 0;
+        int mid = 0;
+        int jg = 0;
         String salida = "";
         for (int i = 0; i<cantidad; i++){
             Personaje personaje = listaPersonajes[i];
-            salida += personaje.recaudacionRol();
+            if (personaje.getRol().equals("SUP")){
+                sup += personaje.formatoEstadisticas();
+            }
+            if (personaje.getRol().equals("ADC")){
+                adc += personaje.formatoEstadisticas();
+            }
+            if (personaje.getRol().equals("TOP")){
+                top += personaje.formatoEstadisticas();
+            }
+            if (personaje.getRol().equals("MID")){
+                mid += personaje.formatoEstadisticas();
+            }
+            if (personaje.getRol().equals("JG")){
+                jg += personaje.formatoEstadisticas();
+            }
         }
+        salida += "Las recaudaciones por rol son: \n SUPORT: $"+sup+" clp \n ATACK DAMAGE CARRY: $"+adc+" clp \n TOP LANER: $"+top+" clp \n MIDDLE LANER: $"+mid+" clp \n JUNGLER: $"+jg+" clp.";
     }
 
 }
