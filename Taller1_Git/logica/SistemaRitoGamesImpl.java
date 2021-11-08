@@ -46,11 +46,6 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    //FALTA
-    public void setRecaudacionPersonaje(String nombrePersonaje, int estadisticas){
-
-    }
-
     public void agregarSkin(String nombreSkin, String calidad, int precioSkin, String nombrePersonaje){
         Skin skin = skins.buscarPorNombrePersonaje(nombrePersonaje);
         if (skin == null){
@@ -69,10 +64,10 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
         PersonajePoseido personajeP = personajesPoseidos.buscarPorNombrePersonaje1(nombrePersonaje);
 
-        if (usuario != null && personaje != null && personajeP != null){
+        if (usuario != null && personaje != null){
             personajeP.setPropietario(usuario);
             personajeP.setPersonaje(personaje);
-            usuario.getListaPersonajesPoseidos().insertar(personajePoseido);
+            usuario.getListaPersonajesPoseidos().insertar(personajeP);
         } else {
             if(usuario == null)System.out.println("USUARIO");
             throw new NullPointerException("Alguno de los datos ingresados no existe");
@@ -172,7 +167,6 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         return texto;
     }
 
-    //FALTA
     public String obtenerSkinSegunPersonaje(String nombrePersonaje){
         String texto = "Lista de Skins del personaje: \n";
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
@@ -187,14 +181,82 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         return texto;
     }
 
-    //FALTA
     public void comprarPersonaje(String nombreCuenta, String nombrePersonaje){
-
+        Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
+        Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
+        PersonajePoseido personajePoseido = personajesPoseidos.buscarPorNombrePersonaje1(nombrePersonaje);
+        if (usuario != null && personaje != null){
+            if (usuario.getRp() > 975){
+                usuario.disminuirRp(975);
+                usuario.getListaPersonajesPoseidos().insertar(personajePoseido);
+                usuario.aumentarNivel(1);
+                personajePoseido.setPropietario(usuario);
+                personaje.aumentarRecaudacion(975);
+            }else{
+                throw new NullPointerException("No cuentas con RP suficiente para realizar la compra.");
+            }
+        }else{
+            throw new NullPointerException("El personaje seleccionado no existe.");
+        }
     }
 
-    //FALTA
     public void comprarSkin(String nombreCuenta, String nombrePersonaje, String nombreSkin){
-
+        Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
+        Personaje personaje = skins.buscarPorNombrePersonaje(nombrePersonaje);
+        Skin skin = skins.buscarPorNombreSkin(nombreSkin);
+        int opcion = eleccion;
+        if (usuario != null && personaje != null){
+            while(opcion != 6){
+                switch(opcion){
+                    case "1":
+                        if (usuario.getRp() > 3250){
+                            usuario.disminuirRp(3250);
+                            usuario.getListaSkinsPoseidas().insertar(skin);
+                            usuario.aumentarNivel(1);
+                        }else{
+                            throw new NullPointerException("No cuentas con RP suficiente para realizar la compra.");
+                        }
+                        break;
+                    case "2":
+                        if (usuario.getRp() > 2750){
+                            usuario.disminuirRp(2750);
+                            usuario.getListaSkinsPoseidas().insertar(skin);
+                            usuario.aumentarNivel(1);
+                        }else{
+                            throw new NullPointerException("No cuentas con RP suficiente para realizar la compra.");
+                        }
+                        break;
+                    case "3":
+                        if (usuario.getRp() > 1820){
+                            usuario.disminuirRp(1820);
+                            usuario.getListaSkinsPoseidas().insertar(skin);
+                            usuario.aumentarNivel(1);
+                        }else{
+                            throw new NullPointerException("No cuentas con RP suficiente para realizar la compra.");
+                        }
+                        break;
+                    case "4":
+                        if (usuario.getRp() > 1350){
+                            usuario.disminuirRp(1350);
+                            usuario.getListaSkinsPoseidas().insertar(skin);
+                            usuario.aumentarNivel(1);
+                        }else{
+                            throw new NullPointerException("No cuentas con RP suficiente para realizar la compra.");
+                        }
+                        break;
+                    case "5":
+                        if (usuario.getRp() > 975){
+                            usuario.disminuirRp(975);
+                            usuario.getListaSkinsPoseidas().insertar(skin);
+                            usuario.aumentarNivel(1);
+                        }else{
+                            throw new NullPointerException("No cuentas con RP suficiente para realizar la compra.");
+                        }
+                        break;
+                }
+            }
+        }else{
+            throw new NullPointerException("El personaje seleccionado no existe.");
     }
 
     public void recargarRP(String nombreCuenta, int rp){
@@ -202,14 +264,19 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         usuario.agregarRp(rp);
     }
 
-    //FALTA
     public String obtenerEstadisticasPersonaje(String nombrePersonaje){
-
+        String texto = "La recaudacion de ventas que obtuvo el personaje es de: \n";
+        Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
+        if (personaje == null){
+            throw new NullPointerException("El personaje no existe.");
+        }else{
+            texto += personaje.formatoEstadistica();
+        }
+        return texto;
     }
 
-    //FALTA
     public String obtenerRecaudacionPorRol(){
-
+        return personajes.formatoRecRol();
     }
 
     //FALTA
