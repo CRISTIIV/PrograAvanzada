@@ -72,15 +72,48 @@ public class Personaje {
         return listaSkins;
     }
 
+    public void aumentarRecaudacion(int recaudacionPersonaje){
+        this.recaudacionPersonaje += recaudacionPersonaje;
+    }
+
     public void setListaSkins(ListaSkin listaSkins) {
         this.listaSkins = listaSkins;
     }
     public String formatoEscritura(){
         return nombrePersonaje+","+rol+","+this.getListaSkins()+"\n";
     }
+    public double formatoEstadisticas(){
+        double clp = recaudacionPersonaje*(6.15);
+        return clp;
+    }
     public String formatoEstadistica(){
-        double rp = recaudacionPersonaje/(6.15);
-        return rp+"\n";
+        return nombrePersonaje+","+this.getRecaudacionPersonaje();
+    }
+    public String recaudacionRol(){
+        int sup = 0;
+        int adc = 0;
+        int top = 0;
+        int mid = 0;
+        int jg = 0;
+        for (int i = 0; i < 155; i++){
+            if (this.getRol().equals("SUP")){
+                sup += this.formatoEstadisticas();
+            }
+            if (this.getRol().equals("ADC")){
+                adc += this.formatoEstadisticas();
+            }
+            if (this.getRol().equals("TOP")){
+                top += this.formatoEstadisticas();
+            }
+            if (this.getRol().equals("MID")){
+                mid += this.formatoEstadisticas();
+            }
+            if (this.getRol().equals("JG")){
+                jg += this.formatoEstadisticas();
+            }
+        }
+        return "Las recaudaciones por rol son: \n SUPORT: $"+sup+" clp \n ATACK DAMAGE CARRY: $"+adc+" clp \n TOP LANER: $"+top+" clp \n MIDDLE LANER: $"+mid+" clp \n JUNGLER: $"+jg+" clp.";
+
     }
     
 }
