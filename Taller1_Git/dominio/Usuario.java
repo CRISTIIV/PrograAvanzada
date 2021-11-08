@@ -163,34 +163,5 @@ public class Usuario {
         String passwordConf = "******"+ultimos3;
         return "Nombre de la cuenta: "nombreCuenta+"\nNick del usuario: "+nick+"\nUltimos caracteres de la contrasena: "+passwordConf+"\n";
     }
-    //ARREGLARLO
-    public String recaudacionRegion(){
-        int las = 0;
-        int lan = 0;
-        int euw = 0;
-        int kr = 0;
-        int na = 0;
-        int ru = 0;
-        if (this.getRol().equals("LAS")){
-            las += this.formatoEstadisticas();
-        }
-        if (this.getRol().equals("LAN")){
-            lan += this.formatoEstadisticas();
-        }
-        if (this.getRol().equals("EUW")){
-            euw += this.formatoEstadisticas();
-        }
-        if (this.getRol().equals("KR")){
-            kr += this.formatoEstadisticas();
-        }
-        if (this.getRol().equals("NA")){
-            na += this.formatoEstadisticas();
-        }
-        if (this.getRol().equals("RU")){
-            ru += this.formatoEstadisticas();
-        }
-        return "Las recaudaciones por region son: \n SUPORT: $"+sup+" clp \n ATACK DAMAGE CARRY: $"+adc+" clp \n TOP LANER: $"+top+" clp \n MIDDLE LANER: $"+mid+" clp \n JUNGLER: $"+jg+" clp.";
-
-    }
-    public void 
+    
 }
