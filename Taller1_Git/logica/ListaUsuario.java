@@ -2,6 +2,7 @@ package Taller1_Git.logica;
 import Taller1_Git.dominio.PersonajePoseido;
 import Taller1_Git.dominio.Skin;
 import Taller1_Git.dominio.Usuario;
+import java.util.Arrays;
 
 public class ListaUsuario {
     private int cantidad;
@@ -213,5 +214,21 @@ public class ListaUsuario {
         return salida;
         }   
     }
+    public String formatoMayorMenor(){
+        String salida = "";
+        for(int i = 0; i < cantidad; i++){
+            Usuario usuario = listaUsuarios[i];
+			for(int j = i+1; j < cantidad; j++){
+                Usuario usuario2 = listaUsuarios[j];
+				if(usuario.getNivel() < usuario2.getNivel()){
+					String aux = usuario.getNombreCuenta();
+					usuario.getNombreCuenta() = usuario2.getNombreCuenta();
+					usuario2.getNombreCuenta() = aux;
+				}
+			}
+            salida += Arrays.toString(listaUsuarios);
+        }
+    }
+
     
 }
