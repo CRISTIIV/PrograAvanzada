@@ -71,7 +71,7 @@ public class ListaUsuario {
         }
         return salida;
     }
-
+    //ARREGLARLO
     public String formatoRecRegion(String nombreCuenta){
         int las = 0;
         int lan = 0;
