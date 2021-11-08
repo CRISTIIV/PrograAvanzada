@@ -72,7 +72,7 @@ public class ListaUsuario {
         return salida;
     }
 
-    public String formatoRecRegion(){
+    public String formatoRecRegion(String nombreCuenta){
         int las = 0;
         int lan = 0;
         int euw = 0;
@@ -80,26 +80,24 @@ public class ListaUsuario {
         int na = 0;
         int ru = 0;
         String salida = "";
-        for (int i = 0; i<cantidad; i++){
-            Usuario usuario = listaUsuarios[i];
-            if (this.getRol().equals("LAS")){
-                las += this.formatoEstadisticas();
-            }
-            if (this.getRol().equals("LAN")){
-                lan += this.formatoEstadisticas();
-            }
-            if (this.getRol().equals("EUW")){
-                euw += this.formatoEstadisticas();
-            }
-            if (this.getRol().equals("KR")){
-                kr += this.formatoEstadisticas();
-            }
-            if (this.getRol().equals("NA")){
-                na += this.formatoEstadisticas();
-            }
-            if (this.getRol().equals("RU")){
-                ru += this.formatoEstadisticas();
-            }
+        Usuario usuario = listaUsuarios[i];
+        if (usuario.getRegion().equals("LAS")){
+            las += this.formatoEstadisticas();
+        }
+        if (usuario.getRegion().equals("LAN")){
+            lan += this.formatoEstadisticas();
+        }
+        if (usuario.getRegion().equals("EUW")){
+            euw += this.formatoEstadisticas();
+        }
+        if (usuario.getRegion().equals("KR")){
+            kr += this.formatoEstadisticas();
+        }
+        if (usuario.getRegion().equals("NA")){
+            na += this.formatoEstadisticas();
+        }
+        if (usuario.getRegion().equals("RU")){
+            ru += this.formatoEstadisticas();
         }
         salida += "Las recaudaciones por rol son: \n SUPORT: $"+sup+" clp \n ATACK DAMAGE CARRY: $"+adc+" clp \n TOP LANER: $"+top+" clp \n MIDDLE LANER: $"+mid+" clp \n JUNGLER: $"+jg+" clp.";
     }
