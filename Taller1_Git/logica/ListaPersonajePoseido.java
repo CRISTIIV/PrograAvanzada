@@ -38,6 +38,14 @@ public class ListaPersonajePoseido {
         this.listaPersonajesPoseidos = listaPersonajesPoseidos;
     }
 
+    public Personaje getPersonaje() {
+        return personaje;
+    }
+
+    public void setPersonaje(Personaje personaje) {
+        this.personaje = personaje;
+    }
+
     public boolean insertar(PersonajePoseido personajePoseido){
         if (cantidad < maximo){
             listaPersonajesPoseidos[cantidad]=personajePoseido;
@@ -76,6 +84,7 @@ public class ListaPersonajePoseido {
         }
         return null;
     }
+
 
     public boolean agregarNewPersonajeP(String nombreNewPersonajeP){
         if (cantidad < maximo){
