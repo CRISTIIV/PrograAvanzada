@@ -114,7 +114,7 @@ public class Usuario {
     public void setListaSkinsPoseidas(ListaSkin listaSkinsPoseidas) {
         ListaSkinsPoseidas = listaSkinsPoseidas;
     }
-
+/* //FORMA 2 DE formatoEscritura:
     public String formateoSkins(){
         int cantS = this.getListaSkinsPoseidas().getCantidad();
         for (int i = 0; i < cantS; i++){
@@ -129,10 +129,22 @@ public class Usuario {
             String personajeP = (this.getListaPersonajesPoseidos().buscarPorI(i)).toString();
             return personajeP+","+this.formateoSkins();
         }
-    }
+    }*/
 
     public String formatoEscritura(){
-        return nombreCuenta+","+password+","+nick+","+nivel+","+rp+","+this.formateoPersonajes()+region+"\n";
+        //FORMA 1:
+        String texto = "";
+        for (int i = 0; i < this.getListaPersonajesPoseidos().getCantidad(); i++){
+            PersonajePoseido personaje = this.getListaPersonajesPoseidos().buscarPorI(i);
+            texto += personaje.getPersonaje().getNombrePersonaje()+",";
+            for (int j = 0; j < this.getListaSkinsPoseidas().getCantidad(); j++){
+                Skin skin = this.getListaSkinsPoseidas().buscarPorI(j);
+                texto += skin.getNombreSkin()+",";
+            }
+        }
+        //PARTE DE LA FORMA 2:
+        //return nombreCuenta+","+password+","+nick+","+nivel+","+rp+","+this.formateoPersonajes()+region+"\n";
+        return nombreCuenta+","+password+","+nick+","+nivel+","+rp+","+texto+region+"\n";
     }
 
     public void agregarRp(double rp) {
