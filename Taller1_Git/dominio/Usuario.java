@@ -13,12 +13,12 @@ public class Usuario {
     private int totalSkins;
     private String nombreSkins;
     private String region;
-    private boolean bloqueado;
+    private String bloqueado;
     private ListaPersonajePoseido ListaPersonajesPoseidos;
     private ListaSkin ListaSkinsPoseidas;
 
 
-    public Usuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region) {
+    public Usuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region, String bloqueado) {
         this.nombreCuenta = nombreCuenta;
         this.password = password;
         this.nick = nick;
@@ -29,6 +29,7 @@ public class Usuario {
         this.totalSkins = totalSkins;
         this.nombreSkins = nombreSkins;
         this.region = region;
+        this.bloqueado = bloqueado;
         ListaPersonajesPoseidos = new ListaPersonajePoseido(156);
         ListaSkinsPoseidas = new ListaSkin(2000);
         
@@ -94,10 +95,10 @@ public class Usuario {
     public void setRegion(String region) {
         this.region = region;
     }
-    public boolean isBloqueado() {
+    public String getBloqueado() {
         return bloqueado;
     }
-    public void setBloqueado(boolean bloqueado) {
+    public void setBloqueado(String bloqueado) {
         this.bloqueado = bloqueado;
     }
     public ListaPersonajePoseido getListaPersonajesPoseidos() {
