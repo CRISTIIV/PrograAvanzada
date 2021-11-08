@@ -121,6 +121,34 @@ public class ListaPersonaje {
         salida += "Las recaudaciones por rol son: \n SUPORT: $"+sup+" clp \n ATACK DAMAGE CARRY: $"+adc+" clp \n TOP LANER: $"+top+" clp \n MIDDLE LANER: $"+mid+" clp \n JUNGLER: $"+jg+" clp.";
         return salida;
     }
+    public String formatoCantRol(){
+        int cantSup = 0;
+        int cantAdc = 0;
+        int cantTop = 0;
+        int cantMid = 0;
+        int cantJg = 0;
+        String salida = "";
+        for (int i = 0; i<cantidad; i++){
+            Personaje personaje = listaPersonajes[i];
+            if (personaje.getRol().equals("SUP")){
+                cantSup += 1;
+            }
+            if (personaje.getRol().equals("ADC")){
+                cantAdc += 1;
+            }
+            if (personaje.getRol().equals("TOP")){
+                cantTop += 1;
+            }
+            if (personaje.getRol().equals("MID")){
+                cantMid += 1;
+            }
+            if (personaje.getRol().equals("JG")){
+                cantJg += 1;
+            }
+        }
+        salida += "Las cantidad de personajes por rol son: \n SUPORT: "+cantSup+" personajes \n ATACK DAMAGE CARRY: "+cantAdc+" personajes \n TOP LANER: "+cantTop+" personajes \n MIDDLE LANER: "+cantMid+" personajes \n JUNGLER: "+cantJg+" personajes.";
+        return salida;
+    }
 
-    
+
 }
