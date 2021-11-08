@@ -55,4 +55,28 @@ public class ListaSkinPoseida {
         return null;
     }
 
+    public Skin buscarPorI(int i){
+        Skin skinPoseida = listaSkinsPoseidas[i];
+        if (skinPoseida!=null){
+            return skinPoseida;
+        }
+        return null;
+    }
+
+    public boolean agregarNewSkinP(String nombreNewSkinP){
+        if (cantidad < maximo){
+            listaSkinsPoseidas[cantidad]=nombreNewSkinP;
+            cantidad++;
+            return true;
+        }
+        if (cantidad = maximo){
+            maximo+=1;
+            listaSkinsPoseidas[cantidad]=nombreNewSkinP;
+            cantidad++;
+            return true;
+        }
+        return false;
+    }
+
+
 }
