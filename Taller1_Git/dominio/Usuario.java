@@ -1,5 +1,6 @@
 package Taller1_Git.dominio;
 import Taller1_Git.logica.ListaPersonajePoseido;
+import Taller1_Git.logica.ListaSkinPoseida;
 
 public class Usuario {
     private String nombreCuenta;
@@ -14,6 +15,7 @@ public class Usuario {
     private String region;
     private boolean bloqueado;
     private ListaPersonajePoseido ListaPersonajesPoseidos;
+    private ListaSkinPoseida ListaSkinsPoseidas;
 
 
     public Usuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region) {
@@ -28,6 +30,7 @@ public class Usuario {
         this.nombreSkins = nombreSkins;
         this.region = region;
         ListaPersonajesPoseidos = new ListaPersonajePoseido(156);
+        ListaSkinsPoseidas = new ListaSkinPoseida(500);
         
     }
 
@@ -103,6 +106,15 @@ public class Usuario {
     public void setListaPersonajesPoseidos(ListaPersonajePoseido listaPersonajesPoseidos) {
         ListaPersonajesPoseidos = listaPersonajesPoseidos;
     }
+    
+    public ListaSkinPoseida getListaSkinsPoseidas() {
+        return ListaSkinsPoseidas;
+    }
+
+    public void setListaSkinsPoseidas(ListaSkinPoseida listaSkinsPoseidas) {
+        ListaSkinsPoseidas = listaSkinsPoseidas;
+    }
+
     public String formatoEscritura(){
 
     }
