@@ -1,6 +1,6 @@
 package Taller1_Git.dominio;
 import Taller1_Git.logica.ListaPersonajePoseido;
-import Taller1_Git.logica.ListaSkinPoseida;
+import Taller1_Git.logica.ListaSkin;
 
 public class Usuario {
     private String nombreCuenta;
@@ -15,7 +15,7 @@ public class Usuario {
     private String region;
     private boolean bloqueado;
     private ListaPersonajePoseido ListaPersonajesPoseidos;
-    private ListaSkinPoseida ListaSkinsPoseidas;
+    private ListaSkin ListaSkinsPoseidas;
 
 
     public Usuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region) {
@@ -30,7 +30,7 @@ public class Usuario {
         this.nombreSkins = nombreSkins;
         this.region = region;
         ListaPersonajesPoseidos = new ListaPersonajePoseido(156);
-        ListaSkinsPoseidas = new ListaSkinPoseida(500);
+        ListaSkinsPoseidas = new ListaSkin(2000);
         
     }
 
@@ -107,16 +107,32 @@ public class Usuario {
         ListaPersonajesPoseidos = listaPersonajesPoseidos;
     }
     
-    public ListaSkinPoseida getListaSkinsPoseidas() {
+    public ListaSkin getListaSkinsPoseidas() {
         return ListaSkinsPoseidas;
     }
 
-    public void setListaSkinsPoseidas(ListaSkinPoseida listaSkinsPoseidas) {
+    public void setListaSkinsPoseidas(ListaSkin listaSkinsPoseidas) {
         ListaSkinsPoseidas = listaSkinsPoseidas;
     }
 
-    public String formatoEscritura(){
+    public String formateoSkins(){
+        int cantS = this.getListaSkinsPoseidas().getCantidad();
+        for (int i = 0; i < cantS; i++){
+            String skinPersonaje = (this.getListaSkinsPoseidas().buscarPorI(i)).toString();
+            return skinPersonaje+",";
+        }
+    }
 
+    public String formateoPersonajes(){
+        int cantP = this.getListaPersonajesPoseidos().getCantidad();
+        for (int i = 0; i < cantP; i++){
+            String personajeP = (this.getListaPersonajesPoseidos().buscarPorI(i)).toString();
+            return personajeP+","+this.formateoSkins();
+        }
+    }
+
+    public String formatoEscritura(){
+        return nombreCuenta+","+password+","+nick+","+nivel+","+rp+","+this.formateoPersonajes()+region+"\n";
     }
 
     public void agregarRp(double rp) {
