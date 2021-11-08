@@ -85,7 +85,7 @@ public class ListaPersonajePoseido {
         return null;
     }
 
-
+    /* //CREO QUE ESTE NO SE USA
     public boolean agregarNewPersonajeP(String nombreNewPersonajeP){
         if (cantidad < maximo){
             listaPersonajesPoseidos[cantidad]=nombreNewPersonajeP;
@@ -99,6 +99,6 @@ public class ListaPersonajePoseido {
             return true;
         }
         return false;
-    }
+    }*/
 
 }
