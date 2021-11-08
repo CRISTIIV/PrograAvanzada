@@ -95,7 +95,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         if (usuario == null || skin == null){
             throw new NullPointerException("Alguno de los datos ingresados no existe");
         } else {
-            usuario.getListaPersonajesPoseidos().insertar(skin);
+            usuario.getListaSkinsPoseidas().insertar(skin);
         }
     }
 
