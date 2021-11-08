@@ -66,11 +66,12 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
 
     public void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
-        //Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
-        PersonajePoseido personajePoseido = personajesPoseidos.buscarPorNombrePersonaje1(nombrePersonaje);
+        Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
+        PersonajePoseido personajeP = personajesPoseidos.buscarPorNombrePersonaje1(nombrePersonaje);
 
-        if (usuario != null && personaje != null){
-            personajePoseido.setPropietario(usuario);
+        if (usuario != null && personaje != null && personajeP != null){
+            personajeP.setPropietario(usuario);
+            personajeP.setPersonaje(personaje);
             usuario.getListaPersonajesPoseidos().insertar(personajePoseido);
         } else {
             if(usuario == null)System.out.println("USUARIO");
@@ -146,23 +147,44 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         return personajes.formatoEscritura();
     }
 
-    public String obtenerDatosSkins(){
-        return skins.formatoEscritura();
+    public String obtenerDatosEstadisticas(){
+        return personajes.formatoEstadistica();
     }
 
-    //FALTA
     public String obtenerPersonajeSegunUsuario(String nombreCuenta){
-
-    }
-
-    //FALTA
-    public String obtenerSkinSegunUsuario(String nombreCuenta){
-
+        String texto = "Lista de personajes: \n";
+        Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
+        if (usuario == null){
+            throw new NullPointerException("El usuario no existe.");
+        }else{
+            if (usuario.getListaPersonajesPoseidos().getCantidad()==0){
+                return "El usuario no cuenta con personajes";
+            }
+            for (int i = 0; i < usuario.getListaPersonajesPoseidos().getCantidad(); i++){
+                PersonajePoseido personaje = usuario.getListaPersonajesPoseidos().buscarPorI(i);
+                texto += "Personaje N°"+i+": "+personaje.getPersonaje().getNombrePersonaje()+"\n";
+                for (int j = 0; j < usuario.getListaSkinsPoseidas().getCantidad(); j++){
+                    Skin skin = usuario.getListaSkinsPoseidas().buscarPorI(j);
+                    texto += "Skins del personaje: "+skin.getNombreSkin()+"\n";
+                }
+            }
+        }
+        return texto;
     }
 
     //FALTA
     public String obtenerSkinSegunPersonaje(String nombrePersonaje){
-
+        String texto = "Lista de Skins del personaje: \n";
+        Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
+        if (personaje == null){
+            throw new NullPointerException("El personaje no existe.");
+        }else{
+            for (int i = 0; personaje.getListaSkins().getCantidad(); i++){
+                Skin skin = personaje.getListaSkins().buscarPorI(i);
+                texto += "Skin N°"+i+": "+skin.getNombreSkin()+"\n";
+            }
+        }
+        return texto;
     }
 
     //FALTA
