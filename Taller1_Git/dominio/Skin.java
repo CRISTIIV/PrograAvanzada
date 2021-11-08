@@ -54,5 +54,6 @@ public class Skin {
     public void setPersonaje(Personaje personaje) {
         this.personaje = personaje;
     }
+
     
 }
