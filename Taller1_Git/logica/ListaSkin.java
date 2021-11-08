@@ -38,6 +38,14 @@ public class ListaSkin {
         this.listaSkins = listaSkins;
     }
 
+    public Personaje getPersonaje() {
+        return personaje;
+    }
+
+    public void setPersonaje(Personaje personaje) {
+        this.personaje = personaje;
+    }
+
     public boolean insertar(Skin skin){
         if (cantidad < maximo){
             listaSkins[cantidad]=skin;
