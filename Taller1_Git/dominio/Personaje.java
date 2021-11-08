@@ -75,5 +75,12 @@ public class Personaje {
     public void setListaSkins(ListaSkin listaSkins) {
         this.listaSkins = listaSkins;
     }
+    public String formatoEscritura(){
+        return nombrePersonaje+","+rol+","+this.getListaSkins()+"\n";
+    }
+    public String formatoEstadistica(){
+        double rp = recaudacionPersonaje/(6.15);
+        return rp+"\n";
+    }
     
 }
