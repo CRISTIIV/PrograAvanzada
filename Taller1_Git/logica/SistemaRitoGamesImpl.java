@@ -287,9 +287,10 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         return personajes.formatoCantRol();
     }
 
-    //FALTA
     public String cuentasMayMen(){
-
+        String titulo = "Los usuarios ordenados de mayor a menor nivel: ";
+        return titulo;
+        return usuarios.formatoMayorMenor();
     }
 
     //FALTA
