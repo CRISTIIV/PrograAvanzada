@@ -62,21 +62,21 @@ public class ListaPersonaje {
         }
         return null;
     }
-
-    public boolean agregarNewPersonaje(String nombreNewPersonaje){
+/*
+    public boolean agregarNewPersonaje(Personaje personaje){
         if (cantidad < maximo){
-            listaPersonajes[cantidad]=nombreNewPersonaje;
+            listaPersonajes[cantidad]=personaje;
             cantidad++;
             return true;
         }
         if (cantidad = maximo){
             maximo+=1;
-            listaPersonajes[cantidad]=nombreNewPersonaje;
+            listaPersonajes[cantidad]=personaje;
             cantidad++;
             return true;
         }
         return false;
-    }
+    }*/
     public String formatoEscritura(){
         String salida = "";
         for (int i = 0; i<cantidad; i++){
