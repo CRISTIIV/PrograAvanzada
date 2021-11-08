@@ -89,7 +89,14 @@ public class ListaPersonaje {
         String salida = "";
         for (int i = 0; i < cantidad; i++){
             Personaje personaje = listaPersonajes[i];
-            salida += personaje.getNombrePersonaje()+","+personaje.formatoEstadistica();
+            salida += personaje.formatoEstadistica();
+        }
+    }
+    public String formatoRecRol(){
+        String salida = "";
+        for (int i = 0; i<cantidad; i++){
+            Personaje personaje = listaPersonajes[i];
+            salida += personaje.recaudacionRol();
         }
     }
 
