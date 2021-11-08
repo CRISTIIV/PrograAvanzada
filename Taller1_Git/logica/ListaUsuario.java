@@ -82,7 +82,6 @@ public class ListaUsuario {
         }
         return salida;
     }
-    //ARREGLARLO
     public String formatoRecRegion(){
         int las = 0;
         int lan = 0;
@@ -212,6 +211,7 @@ public class ListaUsuario {
        
         salida += "Las recaudaciones por region son: \n LAS: $"+lasClp+" clp \n LAN: $"+lanClp+" clp \n EUW: $"+euwClp+" clp \n KR: $"+krClp+" clp \n NA: $"+naClp+" clp \n RU: $"+ruClp+" clp.";
         return salida;
+        }   
     }
-
+    
 }
