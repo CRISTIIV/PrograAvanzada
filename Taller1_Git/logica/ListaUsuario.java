@@ -57,6 +57,24 @@ public class ListaUsuario {
         return false;
     }
 
+    public boolean bloquear(String nombreCuenta){
+        int i;
+        boolean eliminado = false;
+        for (i = 0; i < cantidad; i++){
+            Usuario usuario = listaUsuarios[i];
+            if (usuario.getNombreCuenta().equals(nombreCuenta)){
+                eliminado = true;
+                break;
+            }
+        }
+        if (eliminado){
+            listaUsuarios[i].setBloqueado("bloqueado");
+            }
+            return true;
+        }
+        return false;
+    }
+
     public Usuario buscarPorNombreCuenta(String nombreCuenta){
         for (int i = 0; i < cantidad; i++){
             Usuario usuario = listaUsuarios[i];
@@ -216,6 +234,7 @@ public class ListaUsuario {
     }
     public String formatoMayorMenor(){
         String salida = "";
+        //Usuario usuarios = listaUsuarios;
         for(int i = 0; i < cantidad; i++){
             Usuario usuario = listaUsuarios[i];
 			for(int j = i+1; j < cantidad; j++){
@@ -226,9 +245,9 @@ public class ListaUsuario {
 					usuario2.getNombreCuenta() = aux;
 				}
 			}
-            salida += Arrays.toString(listaUsuarios);
+            //usuarios = usuario;
+            salida += listaUsuarios[i].getNombreCuenta()+",";
         }
+        
     }
-
-    
 }
