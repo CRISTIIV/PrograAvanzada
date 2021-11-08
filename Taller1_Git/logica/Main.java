@@ -191,7 +191,7 @@ public class Main {
                     System.out.println("Ingrese la cantidad de rp a agregar: ");
                     int rp = sc.nextInt();
                     try {
-                        sistema.recargarRP(nombreCuenta, rp);
+                        sistema.recargarRP(nombreCuenta,rp);
                         System.out.println("Se agregaron: " +rp+ " a la cuenta.");
                     } catch(Exception e) {
                         System.out.println(e.getMessage());
