@@ -293,19 +293,41 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         return usuarios.formatoMayorMenor();
     }
 
-    //FALTA
     public boolean agregarNuevaSkin(String nombrePersonaje, String nombreSkin, String calidad){
-
+        Skin skin = skins.buscarPorNombreSkin(nombreSkin);
+        if (skin==null){
+            Skin nueva = new Skin(nombreSkin, calidad, nombrePersonaje);
+            return skins.insertar(nueva);
+        }
     }
 
-    //FALTA
-    public boolean agregarNuevoPersonaje(String nombrePersonaje, String rol, int numeroSkins){
-
+    public boolean agregarNuevoPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int recaudacionPersonaje){
+        Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
+        if (personaje==null){
+            Personaje nuevo = new Personaje(nombrePersonaje, rol, totalSkins, nombreSkins, recaudacionPersonaje);
+            return personajes.insertar(nuevo);
+        }
     }
 
-    //FALTA
     public void bloqueoUsuario(String nombreCuenta){
-        
+        Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
+        if (usuario == null){
+            throw new NullPointerException("La cuenta ingresada no existe");
+        } else {
+            Boolean pertenece = false;
+            for (int i = 0; i < usuarios.getCantidad(); i++) {
+                Usuario usuarioActual = usuarios.buscarPorI(i));
+                if(usuarioActual.getNombreCuenta().equals(nombreCuenta)){
+                    pertenece = true;
+                    break;
+                }
+            }
+            if (pertenece){
+                usuarios.bloquear(nombreCuenta);
+            } else {
+                throw new NullPointerException("La cuenta no está registrada.");
+            }
+        }
     }
     
 }
