@@ -104,9 +104,7 @@ public class Usuario {
         ListaPersonajesPoseidos = listaPersonajesPoseidos;
     }
     public String formatoEscritura(){
-        String ultimos3 = password.substring(Math.max(0, text.length() - 3));
-        String passwordConf = "******"+ultimos3;
-        return nombreCuenta+","+nick+","+passwordConf+"\n";
+
     }
 
     public void agregarRp(double rp) {
@@ -115,5 +113,11 @@ public class Usuario {
     
     public void disminuirRp(double saldo) {
     	this.rp -= rp;
+    }
+
+    public String toStringDatosUsuario(){
+        String ultimos3 = password.substring(Math.max(0, text.length() - 3));
+        String passwordConf = "******"+ultimos3;
+        return "Nombre de la cuenta: "nombreCuenta+"\nNick del usuario: "+nick+"\nUltimos caracteres de la contrasena: "+passwordConf+"\n";
     }
 }
