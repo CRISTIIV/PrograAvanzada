@@ -57,6 +57,7 @@ public class ListaPersonajePoseido {
         }
         return null;
     }
+    /*
     //VIÉNDOLO BIEN ESTE NO TIENE MUCHO SENTIDO, PERO ESPERAR A QUE REVISEN
     public PersonajePoseido buscarPorNombrePersonaje2(Personaje personaje){
         for (int i = 0; i < cantidad; i++){
@@ -66,7 +67,7 @@ public class ListaPersonajePoseido {
             }
         }
         return null;
-    }
+    }*/
 
     public PersonajePoseido buscarPorI(int i){
         PersonajePoseido personajePoseido = listaPersonajesPoseidos[i];
