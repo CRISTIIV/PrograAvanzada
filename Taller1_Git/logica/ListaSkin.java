@@ -75,6 +75,4 @@ public class ListaSkin {
         return null;
     }
 
-
-
 }
