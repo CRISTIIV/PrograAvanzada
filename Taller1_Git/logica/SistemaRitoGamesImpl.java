@@ -65,12 +65,15 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
 
     public void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
-        Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
+        //Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
+        PersonajePoseido personajePoseido = personajesPoseidos.buscarPorNombrePersonaje1(nombrePersonaje);
 
-        if (usuario == null || personaje == null){
-            throw new NullPointerException("Alguno de los datos ingresados no existe");
+        if (usuario != null && personaje != null){
+            personajePoseido.setPropietario(usuario);
+            usuario.getListaPersonajesPoseidos().insertar(personajePoseido);
         } else {
-            usuario.getListaPersonajesPoseidos().insertar(personaje);
+            if(usuario == null)System.out.println("USUARIO");
+            throw new NullPointerException("Alguno de los datos ingresados no existe");
         }
     }
 
@@ -123,7 +126,13 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
     }
 
     public String obtenerDatosUsuario(String nombreCuenta){
-        Usuario
+        Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
+        String salida = "";
+        if (usuario!=null){
+            salida += usuario.toStringDatosUsuario();
+            return salida;
+        }
+        throw new NullPointerException("No existe el usuario ingresado");
     }
 
     //FALTA
