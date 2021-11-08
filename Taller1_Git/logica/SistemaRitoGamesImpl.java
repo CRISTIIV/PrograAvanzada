@@ -283,9 +283,8 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         return.usuarios.formatoRecRegion();
     }
 
-    //FALTA
     public String obtenerCantPersonajesPorRol(){
-
+        return personajes.formatoCantRol();
     }
 
     //FALTA
