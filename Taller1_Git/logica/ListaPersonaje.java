@@ -91,6 +91,7 @@ public class ListaPersonaje {
             Personaje personaje = listaPersonajes[i];
             salida += personaje.formatoEstadistica();
         }
+        return salida;
     }
     public String formatoRecRol(){
         int sup = 0;
@@ -118,6 +119,7 @@ public class ListaPersonaje {
             }
         }
         salida += "Las recaudaciones por rol son: \n SUPORT: $"+sup+" clp \n ATACK DAMAGE CARRY: $"+adc+" clp \n TOP LANER: $"+top+" clp \n MIDDLE LANER: $"+mid+" clp \n JUNGLER: $"+jg+" clp.";
+        return salida;
     }
 
 }
