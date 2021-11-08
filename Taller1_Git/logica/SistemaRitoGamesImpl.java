@@ -17,6 +17,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         skins = new ListaSkin(1000);
         personajes = new ListaPersonaje(200);
         personajesPoseidos = new ListaPersonajePoseido(1000);
+        //skinsPoseidas = new ListaSkinPoseida(2000);
     }
     @Override
     public void agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region){
@@ -88,14 +89,16 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    public void asociarSkinUsuario(String nombreSkin, String nombreCuenta){
+    public void asociarSkinUsuario(String nombreSkin, String nombreCuenta, String nombrePersonaje){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         Skin skin = skins.buscarPorNombreSkin(nombreSkin);
+        PersonajePoseido personaje = personajesPoseidos.buscarPorNombrePersonaje1(nombrePersonaje)
 
-        if (usuario == null || skin == null){
+        if (usuario == null || skin == null || personaje == null){
             throw new NullPointerException("Alguno de los datos ingresados no existe");
         } else {
             usuario.getListaSkinsPoseidas().insertar(skin);
+            personaje.getListaSkinsPoseidos().insertar(skin);
         }
     }
 
@@ -135,14 +138,16 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         throw new NullPointerException("No existe el usuario ingresado");
     }
 
-    //FALTA
-    public String obtenerDatosPersonajes(){
-
+    public String obtenerDatosUsuarios(){
+        return usuarios.formatoEscritura();
     }
 
-    //FALTA
-    public String obtenerDatosSkins(){
+    public String obtenerDatosPersonajes(){
+        return personajes.formatoEscritura();
+    }
 
+    public String obtenerDatosSkins(){
+        return skins.formatoEscritura();
     }
 
     //FALTA
