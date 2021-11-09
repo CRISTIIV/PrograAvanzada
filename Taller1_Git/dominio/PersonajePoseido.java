@@ -13,8 +13,7 @@ public class PersonajePoseido {
     private Personaje personaje;
     private ListaSkin listaSkinsPoseidos;
 
-    public PersonajePoseido(){//SEGÚN YO NO SE COLOCA NADA EN EL PARENTESIS ESTA VEZ Y ABAJO SOLO LA LISTA, 
-                                                                      //PERO QUEDARÍA VACÍO ACÁ, ENTONCES NO SÉ:(
+    public PersonajePoseido(){
         propietario = null;
         personaje = null;
         listaSkinsPoseidos = new ListaSkin(500);
