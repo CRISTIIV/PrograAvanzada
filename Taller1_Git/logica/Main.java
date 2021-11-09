@@ -185,7 +185,7 @@ public class Main {
     //EDITAR
     public static void menuCliente(String nombreCuenta,SistemaRitoGames sistema) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Bienvenido, Que desea realizar");
+        System.out.println("Bienvenido, Que desea realizar?");
         System.out.println("\n1) Desplegar skins disponibles para comprar");
         System.out.println("2) Comprar Skin");
         System.out.println("3) Comprar Personaje");
@@ -199,7 +199,7 @@ public class Main {
             Boolean salir = false;
             switch (opcion) {
                 case "1":
-                
+                    sistema.obtenerSkinsPersonajes();
                     break;
                 
                 case "2":
