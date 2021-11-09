@@ -155,11 +155,13 @@ public class Main {
                     break;
 
                 case "7":
-
+                    System.out.println("\nIngrese el nombre de la cuenta que desea bloquear: ");
+                    String nombreCuentaBloquear = scanner.next();
+                    sistema.bloqueoUsuario(nombreCuentaBloquear);
                     break;
                 
                 case "8":
-
+                    sistema.cuentasMayMen();
                     break;
                     
                 case "salir":
