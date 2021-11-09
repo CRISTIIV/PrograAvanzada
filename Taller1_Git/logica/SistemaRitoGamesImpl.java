@@ -263,14 +263,9 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         usuario.agregarRp(rp);
     }
 
-    public String obtenerEstadisticasPersonaje(String nombrePersonaje){
-        String texto = "La recaudacion de ventas que obtuvo el personaje es de: \n";
-        Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
-        if (personaje == null){
-            throw new NullPointerException("El personaje no existe.");
-        }else{
-            texto += personaje.formatoEstadistica();
-        }
+    public String obtenerEstadisticasPersonaje(){
+        String texto = "La recaudacion de ventas que obtuvo por personaje: \n";
+        texto += personaje.formatoEstadistica();
         return texto;
     }
 
