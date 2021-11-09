@@ -36,6 +36,11 @@ public class ListaPersonaje {
         this.listaPersonajes = listaPersonajes;
     }
     
+    /**
+     * Method to insert a new character in the array of characters.
+     * @param personaje Name of the character.
+     * @return Boolean to know if there is still a place on the array. 
+     */ 
     public boolean insertar(Personaje personaje){
         if (cantidad < maximo){
             listaPersonajes[cantidad]=personaje;
@@ -45,6 +50,11 @@ public class ListaPersonaje {
         return false;
     }
     
+    /** 
+     * Method to find a character by using it's name.
+     * @param nombrePersonaje Name of the character.
+     * @return The character that we were looking for or, null to clarify that this character doesn't exists.
+     */
     public Personaje buscarPorNombrePersonaje(String nombrePersonaje){
         for (int i = 0; i < cantidad; i++){
             Personaje personaje = listaPersonajes[i];
@@ -54,7 +64,12 @@ public class ListaPersonaje {
         }
         return null;
     }
-
+    
+    /**
+     * Method to find a character by using it's position on the array.
+     * @param i index
+     * @return The character that we were looking for or a null, to clarify that this character doesn't exists.
+     */ 
     public Personaje buscarPorI(int i){
         Personaje personaje = listaPersonajes[i];
         if (personaje!=null){
@@ -62,21 +77,11 @@ public class ListaPersonaje {
         }
         return null;
     }
-/*
-    public boolean agregarNewPersonaje(Personaje personaje){
-        if (cantidad < maximo){
-            listaPersonajes[cantidad]=personaje;
-            cantidad++;
-            return true;
-        }
-        if (cantidad = maximo){
-            maximo+=1;
-            listaPersonajes[cantidad]=personaje;
-            cantidad++;
-            return true;
-        }
-        return false;
-    }*/
+    
+    /**
+     * Method to print the names of the characters.
+     * @return String 
+     */
     public String formatoEscritura(){
         String salida = "";
         for (int i = 0; i<cantidad; i++){
@@ -85,6 +90,11 @@ public class ListaPersonaje {
         }
         return salida;
     }
+    
+    /**
+     * Method to print the names of the characters and the income of them.
+     * @return String 
+     */
     public String formatoEstadistica(){
         String salida = "";
         for (int i = 0; i < cantidad; i++){
@@ -93,6 +103,11 @@ public class ListaPersonaje {
         }
         return salida;
     }
+    
+    /**
+     * Method to print the names of the characters and the income of them by using their role.
+     * @return String 
+     */
     public String formatoRecRol(){
         int sup = 0;
         int adc = 0;
@@ -121,6 +136,11 @@ public class ListaPersonaje {
         salida += "Las recaudaciones por rol son: \n SUPORT: $"+sup+" clp \n ATACK DAMAGE CARRY: $"+adc+" clp \n TOP LANER: $"+top+" clp \n MIDDLE LANER: $"+mid+" clp \n JUNGLER: $"+jg+" clp.";
         return salida;
     }
+    
+    /**
+     * Method to print the names of the characters and how many characters per role exists.
+     * @return String 
+     */ 
     public String formatoCantRol(){
         int cantSup = 0;
         int cantAdc = 0;
