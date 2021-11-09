@@ -61,21 +61,40 @@ public class Personaje {
     public ListaSkin getListaSkins() {
         return listaSkins;
     }
-
-    public void aumentarRecaudacion(int recaudacionPersonaje){
-        this.recaudacionPersonaje += recaudacionPersonaje;
-    }
-
+    
     public void setListaSkins(ListaSkin listaSkins) {
         this.listaSkins = listaSkins;
     }
+    
+    /**
+     * This method rises the amount of recaudation of an especific character.
+     * @param recaudacionPersonaje This pararameter refers to how much the recaudation has risen.
+     */
+    public void aumentarRecaudacion(int recaudacionPersonaje){
+        this.recaudacionPersonaje += recaudacionPersonaje;
+    }
+ 
+    /**
+     * Method to print the name of a character, it's role and it's skins. 
+     * @return String
+     */
     public String formatoEscritura(){
         return nombrePersonaje+","+rol+","+this.getListaSkins()+"\n";
     }
+    
+    /**
+     * Method to print the income of a character.
+     * @return Its total income.
+     */
     public double formatoEstadisticas(){
         double clp = recaudacionPersonaje*(6.15);
         return clp;
     }
+    
+    /**
+     * Method to print the income of a character and his name.
+     * @return name of tha character and its income.
+     */
     public String formatoEstadistica(){
         return nombrePersonaje+","+this.getRecaudacionPersonaje();
     }
