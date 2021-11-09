@@ -194,6 +194,11 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
     }
 
     @Override
+    public String obtenerSkinsPersonajes(){
+        return personajes.obtenerSkins();
+    }
+
+    @Override
     public void comprarPersonaje(String nombreCuenta, String nombrePersonaje){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
