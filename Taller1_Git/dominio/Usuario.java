@@ -116,8 +116,11 @@ public class Usuario {
         ListaSkinsPoseidas = listaSkinsPoseidas;
     }
     
+    /**
+     * This method allows to print the user with its respective name, password, nickname, level, rp and country.
+     * @return String
+     */ 
     public String formatoEscritura(){
-        //FORMA 1:
         String texto = "";
         for (int i = 0; i < this.getListaPersonajesPoseidos().getCantidad(); i++){
             PersonajePoseido personaje = this.getListaPersonajesPoseidos().buscarPorI(i);
@@ -129,14 +132,27 @@ public class Usuario {
         }
         return nombreCuenta+","+password+","+nick+","+nivel+","+rp+","+texto+region+"\n";
     }
-
+    
+    /**
+     * This method rises the amount of rp of an especific account.
+     * @param rp This pararameter refers to the rp.
+     */
     public void agregarRp(int rp) {
     	this.rp += rp;
     }
+    
+    /**
+     * This method rises the level of an especific account.
+     * @param nivel This pararameter refers to the nivel of the user.
+     */
     public void aumentarNivel(int nivel){
         this.nivel += nivel;
     }
     
+    /**
+     * This method lowers the amount of rp of an especific account.
+     * @param rp This pararameter refers to the rp.
+     */
     public void disminuirRp(int rp) {
     	this.rp -= rp;
     }
