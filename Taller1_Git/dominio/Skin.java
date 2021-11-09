@@ -1,6 +1,10 @@
 package Taller1_Git.dominio;
 import Taller1_Git.dominio.Personaje;
 
+/**
+ * @author Vicente Cristi & Sebastian Reyes (equipo S&V)
+ */
+
 public class Skin {
     private String nombreSkin;
     private String calidad;
