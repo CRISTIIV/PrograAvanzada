@@ -1,5 +1,6 @@
 package Taller1_Git.logica;
 import Taller1_Git.dominio.Personaje;
+import Taller1_Git.dominio.Skin;
 
 /**
  * @author Vicente Cristi & Sebastian Reyes (equipo S&V)
@@ -115,7 +116,7 @@ public class ListaPersonaje {
             String nombrePersonajeSeleccionado = personaje.getNombrePersonaje();
             for (int j = 0; j < personaje.getListaSkins().getCantidad(); j++){
                 Skin skin = personaje.getListaSkins().buscarPorI(j);
-                texto += "Personaje: "+nombrePersonajeSeleccionado+" sus Skin: N°"+j+": "+skin.getNombreSkin()+"\n";
+                texto += "Personaje: "+nombrePersonajeSeleccionado+" sus Skin: NÂ°"+j+": "+skin.getNombreSkin()+"\n";
             }
         }
         return texto;
@@ -186,6 +187,4 @@ public class ListaPersonaje {
         salida += "Las cantidad de personajes por rol son: \n SUPORT: "+cantSup+" personajes \n ATACK DAMAGE CARRY: "+cantAdc+" personajes \n TOP LANER: "+cantTop+" personajes \n MIDDLE LANER: "+cantMid+" personajes \n JUNGLER: "+cantJg+" personajes.";
         return salida;
     }
-
-
 }
