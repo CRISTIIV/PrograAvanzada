@@ -64,9 +64,9 @@ public class ListaSkin {
         return false;
     }
 
-    public Personaje buscarPorNombrePersonaje(String nombrePersonaje){
+    public Skin buscarPorNombrePersonaje(String nombrePersonaje){
         for (int i = 0; i < cantidad; i++){
-            Personaje personaje = listaSkins[i];
+            Skin personaje = listaSkins[i];
             if (personaje.getNombrePersonaje().equals(nombrePersonaje)){
                 return personaje;
             }
