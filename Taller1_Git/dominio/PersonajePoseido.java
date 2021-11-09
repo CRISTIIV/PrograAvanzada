@@ -3,6 +3,10 @@ import Taller1_Git.logica.ListaSkin;
 import Taller1_Git.dominio.Usuario;
 import Taller1_Git.dominio.Personaje;
 
+/**
+ * @author Vicente Cristi & Sebastian Reyes (equipo S&V)
+ */
+
 public class PersonajePoseido {
     
     private Usuario propietario;
