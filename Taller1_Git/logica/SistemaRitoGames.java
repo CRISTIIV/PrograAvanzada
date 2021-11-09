@@ -36,7 +36,7 @@ public interface SistemaRitoGames {
 
     void recargarRP(String nombreCuenta, int rp);
 
-    String obtenerEstadisticasPersonaje(String nombrePersonaje);
+    String obtenerEstadisticasPersonaje();
 
     String obtenerRecaudacionPorRol();
 
