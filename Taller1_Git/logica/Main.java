@@ -182,7 +182,6 @@ public class Main {
         }
     }
 
-    //EDITAR
     public static void menuCliente(String nombreCuenta,SistemaRitoGames sistema) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Bienvenido, Que desea realizar?");
@@ -199,7 +198,7 @@ public class Main {
             Boolean salir = false;
             switch (opcion) {
                 case "1":
-                    sistema.obtenerSkinsPersonajes();
+                    System.out.println(sistema.obtenerSkinsPersonajes());
                     break;
                 
                 case "2":
@@ -217,7 +216,7 @@ public class Main {
                     break;
             
                 case "4":
-                    
+                    System.out.println(sistema.obtenerDatosUsuario(nombreCuenta));
                     break;
 
                 case "5":
