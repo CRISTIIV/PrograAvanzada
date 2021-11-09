@@ -93,6 +93,21 @@ public class ListaPersonaje {
         }
         return salida;
     }
+
+    
+    public String obtenerSkins(){
+        String texto = "Lista de Skins de los personajes: \n";
+        for (int i = 0; i < cantidad; i++){
+            Personaje personaje = listaPersonajes[i];
+            String nombrePersonajeSeleccionado = personaje.getNombrePersonaje();
+            for (int j = 0; j < personaje.getListaSkins().getCantidad(); j++){
+                Skin skin = personaje.getListaSkins().buscarPorI(j);
+                texto += "Personaje: "+nombrePersonajeSeleccionado+" sus Skin: N°"+j+": "+skin.getNombreSkin()+"\n";
+            }
+        }
+        return texto;
+    }
+
     public String formatoRecRol(){
         int sup = 0;
         int adc = 0;
