@@ -112,7 +112,7 @@ public class Main {
             Boolean salir = false;
             switch (opcion) {
                 case "1":
-                   System.out.println(sistema.obtenerRecaudacionPorRol());
+                    System.out.println(sistema.obtenerRecaudacionPorRol());
                     break;
                 
                 case "2":
