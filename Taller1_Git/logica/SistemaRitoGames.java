@@ -8,6 +8,8 @@ public interface SistemaRitoGames {
 
     void agregarSkin(String nombreSkin, String calidad, String nombrePersonaje);
 
+    void agregarEstadistica(String nombrePersonaje, int recaudacion);
+    
     void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta);
 
     void asociarSkinPersonaje(String nombreSkin, String nombrePersonaje);
