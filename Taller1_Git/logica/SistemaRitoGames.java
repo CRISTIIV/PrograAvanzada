@@ -51,5 +51,7 @@ public interface SistemaRitoGames {
     boolean agregarNuevoPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int recaudacionPersonaje);
 
     void bloqueoUsuario(String nombreCuenta);
+
+    String verificarBloqueo(String nombreCuenta);
     
 }
