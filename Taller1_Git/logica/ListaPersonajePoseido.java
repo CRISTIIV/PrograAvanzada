@@ -1,5 +1,6 @@
 package Taller1_Git.logica;
 import Taller1_Git.dominio.PersonajePoseido;
+import Taller1_Git.dominio.Usuario;
 import Taller1_Git.dominio.Personaje;
 
 /**
@@ -69,10 +70,10 @@ public class ListaPersonajePoseido {
      * @param nombrePersonaje Name of the character.
      * @return The character that we were looking for or, null to clarify that this possessed character doesn't exists.
      */ 
-    public Personaje buscarPorNombrePersonaje1(String nombrePersonaje){
+    public PersonajePoseido buscarPorNombrePersonaje1(String nombrePersonaje){
         for (int i = 0; i < cantidad; i++){
-            Personaje personaje = listaPersonajesPoseidos[i];
-            if (personaje.getNombrePersonaje().equals(nombrePersonaje)){
+            PersonajePoseido personaje = listaPersonajesPoseidos[i];
+            if (personaje.getPersonaje().equals(nombrePersonaje)){
                 return personaje;
             }
         }
