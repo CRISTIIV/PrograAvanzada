@@ -22,9 +22,9 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
     public void agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         if (usuario == null){
-            Usuario usuarioNuevo = new Usuario(nombreCuenta, password, nick, nivel, rp, totalPersonajes, nombrePersonajes, totalSkins, nombreSkins, region);
+            Usuario usuarioNuevo = new Usuario(nombreCuenta, password, nick, nivel, rp, totalPersonajes, nombrePersonajes, totalSkins, nombreSkins, region, region);
             if (!usuarios.insertar(usuarioNuevo)){
-                throw new NullPointerException("La lista de cuentas está llena");
+                throw new NullPointerException("La lista de cuentas estÃ¡ llena");
             }
         }
         else{
@@ -38,7 +38,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         if (personaje == null){
             Personaje personajeNuevo = new Personaje(nombrePersonaje, rol, totalSkins, nombreSkins, recaudacionPersonaje);
             if (!personajes.insertar(personajeNuevo)){
-                throw new NullPointerException("La lista de personajes ya está llena, para ingresar nuevos personajes debe hacerlo manualmente.");
+                throw new NullPointerException("La lista de personajes ya estÃ¡ llena, para ingresar nuevos personajes debe hacerlo manualmente.");
             }
         }
         else{
@@ -52,12 +52,19 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         if (skin == null){
             Skin skinNueva = new Skin(nombreSkin, calidad, nombrePersonaje);
             if (!skins.insertar(skinNueva)){
-                throw new NullPointerException("La lista de skins ya está llena, para ingresar nuevas skins debe hacerlo manualmente.");
+                throw new NullPointerException("La lista de skins ya estÃ¡ llena, para ingresar nuevas skins debe hacerlo manualmente.");
             }
         }
         else{
             throw new NullPointerException("La skin ya existe.");
         }
+    }
+    
+    public void agregarEstadistica(String nombrePersonaje, int recaudacion) {
+    	Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
+    	if (personaje==null) {
+    		Personaje EstadisticaNueva
+    	}
     }
 
     @Override
@@ -107,7 +114,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
 
         if (usuario == null){
-            return "La cuenta ingresada no existe, ¿desea registrase?";
+            return "La cuenta ingresada no existe, Â¿desea registrase?";
         }
         else{
             if (usuario != null && usuario.getPassword().equals(password)){
@@ -168,7 +175,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
             }
             for (int i = 0; i < usuario.getListaPersonajesPoseidos().getCantidad(); i++){
                 PersonajePoseido personaje = usuario.getListaPersonajesPoseidos().buscarPorI(i);
-                texto += "Personaje N°"+i+": "+personaje.getPersonaje().getNombrePersonaje()+"\n";
+                texto += "Personaje NÂ°"+i+": "+personaje.getPersonaje().getNombrePersonaje()+"\n";
                 for (int j = 0; j < usuario.getListaSkinsPoseidas().getCantidad(); j++){
                     Skin skin = usuario.getListaSkinsPoseidas().buscarPorI(j);
                     texto += "Skins del personaje: "+skin.getNombreSkin()+"\n";
@@ -187,7 +194,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }else{
             for (int i = 0; personaje.getListaSkins().getCantidad(); i++){
                 Skin skin = personaje.getListaSkins().buscarPorI(i);
-                texto += "Skin N°"+i+": "+skin.getNombreSkin()+"\n";
+                texto += "Skin NÂ°"+i+": "+skin.getNombreSkin()+"\n";
             }
         }
         return texto;
@@ -287,7 +294,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
     @Override
     public String obtenerEstadisticasPersonaje(){
         String texto = "La recaudacion de ventas que obtuvo por personaje: \n";
-        texto += personaje.formatoEstadistica();
+        texto += personajes.formatoEstadistica();
         return texto;
     }
 
@@ -309,8 +316,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
     @Override
     public String cuentasMayMen(){
         String titulo = "Los usuarios ordenados de mayor a menor nivel: ";
-        return titulo;
-        return usuarios.formatoMayorMenor();
+        return titulo+usuarios.formatoMayorMenor();
     }
 
     @Override
@@ -320,6 +326,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
             Skin nueva = new Skin(nombreSkin, calidad, nombrePersonaje);
             return skins.insertar(nueva);
         }
+		return false;
     }
 
     @Override
@@ -329,6 +336,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
             Personaje nuevo = new Personaje(nombrePersonaje, rol, totalSkins, nombreSkins, recaudacionPersonaje);
             return personajes.insertar(nuevo);
         }
+		return false;
     }
 
     @Override
@@ -348,3 +356,4 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
     }
 
 }
+
