@@ -93,10 +93,9 @@ public class Personaje {
     
     /**
      * Method to print the income of a character and his name.
-     * @return name of tha character and its income.
+     * @return name of that character and its income.
      */
     public String formatoEstadistica(){
         return nombrePersonaje+","+this.getRecaudacionPersonaje();
     }
-    
 }
