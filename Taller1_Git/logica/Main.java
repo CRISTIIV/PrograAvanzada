@@ -128,7 +128,7 @@ public class Main {
                     break;
                     
                 case "5":
-                    System.out.println("Usted eligio agregar un nuervo personaje al juego, a continuacion ingrese los datos del personaje: ");
+                    System.out.println("Usted eligio agregar un nuevo personaje al juego, a continuacion ingrese los datos del personaje: ");
                     System.out.println("\nIngrese el nombre del personaje: ");
                     String nuevoNombre = scanner.next();
                     System.out.println("\nIngrese el rol del personaje: ");
@@ -144,7 +144,14 @@ public class Main {
                     break;
 
                 case "6":
-
+                    System.out.println("Usted eligio agregar una nueva skin a un personaje del juego, a continuacion ingrese los datos del personaje: ");
+                    System.out.println("\nIngrese el nombre del personaje al que desea agregar la skin: ");
+                    String nombrePersonajeSkin = scanner.next();
+                    System.out.println("\nIngrese el nombre de la skin que desea agregar al personaje: ");
+                    String nombreNuevaSkin = scanner.next();
+                    System.out.println("\nIngrese la calidad de la nueva skin: ");
+                    String nuevaCalidad = scanner.next();
+                    sistema.agregarNuevaSkin(nombrePersonajeSkin, nombreNuevaSkin, nuevaCalidad);
                     break;
 
                 case "7":
