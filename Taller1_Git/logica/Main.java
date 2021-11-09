@@ -35,6 +35,44 @@ public class Main {
         scanner.close();
     }
 
+    public static void lecturaCuentas(SistemaRitoGames sistema) {
+        int contador = 1;
+        try {
+            Scanner archivo = new Scanner(new File("Cuentas.txt"));
+            while (archivo.hasNextLine()){
+                
+                String linea = archivo.nextLine();
+                String[] parte = linea.split(",");
+    
+                String nombreCuenta = parte[0];
+                String password = parte[1];
+                String nick = parte[2];
+                int nivel = Integer.parseInt(parte[3]);
+                int rp = Integer.parseInt(parte[4]);
+                int totalPersonajes = Integer.parseInt(parte[5]);
+                for (int i = 0; i < totalPersonajes; i++){
+                    String nombrePersonajes = parte[6+i];
+                    nombrePersonajes += ",";
+                    int totalSkins = Integer.parseInt(parte[6+totalPersonajes]);
+                    for (int j = 0; j < totalSkins; j++){
+                        String nombreSkins = parte[7+totalPersonajes];
+                        nombreSkins += ",";
+                    }
+                }
+                String region = parte[8+totalPersonajes+totalSkins];
+    
+                try {
+                    sistema.agregarUsuario(nombreCuenta, password, nick, nivel, rp, totalPersonajes, nombrePersonajes, totalSkins, nombreSkins, region);
+                } catch (Exception e) {
+                    System.out.println("No se pudo agregar la cuenta en la linea" + contador + "ERROR: "+ e.getMessage());
+                }
+                contador++;
+    
+            }
+        } catch (Exception e) {
+            System.out.println("No se pudo leer el archivo Cuentas.txt");
+        }
+    }
 
     public static void mainMenu(SistemaRitoGames sistema, String nombreCuenta, String password){
         Scanner sc = new Scanner(System.in);
@@ -320,5 +358,5 @@ public class Main {
         }
     }
 
-    
+
 }
