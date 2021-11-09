@@ -203,15 +203,21 @@ public class Main {
                     break;
                 
                 case "2":
-                   
+                    System.out.println("\nIngrese el personaje al que le desea comprar una skin: ");
+                    String nombrePersonajeSkinComprar = scanner.next();
+                    System.out.println("\nIngrese el nombre de la skin: ");
+                    String nombreSkinComprar = scanner.next();
+                    sistema.comprarSkin(nombreCuenta, nombrePersonajeSkinComprar, nombreSkinComprar);
                     break;
                 
                 case "3":
-
+                    System.out.println("\nIngrese el nombre del personaje que desea comprar: ");
+                    String nombrePersonajeComprar = scanner.next();
+                    sistema.comprarPersonaje(nombreCuenta, nombrePersonajeComprar);
                     break;
             
                 case "4":
-
+                    
                     break;
 
                 case "5":
