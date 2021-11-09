@@ -290,5 +290,35 @@ public class Main {
         return stringFinal;
     }
 
+    private static void sobreEscribirCuentas(SistemaRitoGames sistema) {
+        try {
+            BufferedWriter escritura = new BufferedWriter(new FileWriter("Cuentas.txt"));
+            escritura.write(sistema.obtenerDatosUsuarios());
+            escritura.close();
+        } catch (Exception e) {
+            System.out.println("No se pudo sobreescribir el archivo Cuentas.txt");
+        }
+    }
 
+    private static void sobreEscribirPersonajes(SistemaRitoGames sistema) {
+        try {
+            BufferedWriter escritura = new BufferedWriter(new FileWriter("Personajes.txt"));
+            escritura.write(sistema.obtenerDatosPersonajes());
+            escritura.close();
+        } catch (Exception e) {
+            System.out.println("No se pudo sobreescribir el archivo Personajes.txt");
+        }
+    }
+
+    private static void sobreEscribirEstadisticas(SistemaRitoGames sistema) {
+        try {
+            BufferedWriter escritura = new BufferedWriter(new FileWriter("Estadisticas.txt"));
+            escritura.write(sistema.obtenerDatosEstadisticas());
+            escritura.close();
+        } catch (Exception e) {
+            System.out.println("No se pudo sobreescribir el archivo Estadisticas.txt");
+        }
+    }
+
+    
 }
