@@ -2,6 +2,10 @@ package Taller1_Git.dominio;
 import Taller1_Git.logica.ListaPersonajePoseido;
 import Taller1_Git.logica.ListaSkin;
 
+/**
+ * @author Vicente Cristi & Sebastian Reyes (equipo S&V)
+ */
+
 public class Usuario {
     private String nombreCuenta;
     private String password;
