@@ -62,19 +62,6 @@ public class Personaje {
         return listaSkins;
     }
 
-    
-    public String obtenerSkins(){
-        String texto = "Lista de Skins del personaje: \n";
-        for (int i = 0; i < listaSkins.getCantidad(); i++){
-            Personaje personaje = listaSkins.buscarPorI(i);
-            for (int i = 0; personaje.getListaSkins().getCantidad(); i++){
-                Skin skin = personaje.getListaSkins().buscarPorI(i);
-                texto += "Skin N°"+i+": "+skin.getNombreSkin()+"\n";
-            }
-        }
-        return texto;
-    }
-
     public void aumentarRecaudacion(int recaudacionPersonaje){
         this.recaudacionPersonaje += recaudacionPersonaje;
     }
