@@ -31,7 +31,8 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
             throw new NullPointerException("La cuenta ya existe.");
         }
     }
-
+    
+    @Override
     public void agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int recaudacionPersonaje){
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
         if (personaje == null){
@@ -45,6 +46,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
+    @Override
     public void agregarSkin(String nombreSkin, String calidad, String nombrePersonaje){
         Skin skin = skins.buscarPorNombrePersonaje(nombrePersonaje);
         if (skin == null){
@@ -58,6 +60,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
+    @Override
     public void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
@@ -73,6 +76,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
+    @Override
     public void asociarSkinPersonaje(String nombreSkin, String nombrePersonaje){
         Skin skin = skins.buscarPorNombreSkin(nombreSkin);
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
@@ -84,6 +88,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
+    @Override
     public void asociarSkinUsuario(String nombreSkin, String nombreCuenta, String nombrePersonaje){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         Skin skin = skins.buscarPorNombreSkin(nombreSkin);
@@ -97,6 +102,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
+    @Override
     public String iniciarSesion(String nombreCuenta, String password){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
 
@@ -111,6 +117,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
+    @Override
     public void cambiarPassword(String nombreCuenta, String oldPassword, String newPassword){
         String validacion = iniciarSesion(nombreCuenta,oldPassword);
 		Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
@@ -123,6 +130,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
 		}
     }
 
+    @Override
     public String obtenerDatosUsuario(String nombreCuenta){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         String salida = "";
@@ -133,18 +141,22 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         throw new NullPointerException("No existe el usuario ingresado");
     }
 
+    @Override
     public String obtenerDatosUsuarios(){
         return usuarios.formatoEscritura();
     }
 
+    @Override
     public String obtenerDatosPersonajes(){
         return personajes.formatoEscritura();
     }
 
+    @Override
     public String obtenerDatosEstadisticas(){
         return personajes.formatoEstadistica();
     }
 
+    @Override
     public String obtenerPersonajeSegunUsuario(String nombreCuenta){
         String texto = "Lista de personajes: \n";
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
@@ -166,6 +178,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         return texto;
     }
 
+    @Override
     public String obtenerSkinSegunPersonaje(String nombrePersonaje){
         String texto = "Lista de Skins del personaje: \n";
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
@@ -180,6 +193,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         return texto;
     }
 
+    @Override
     public void comprarPersonaje(String nombreCuenta, String nombrePersonaje){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
@@ -199,6 +213,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
+    @Override
     public void comprarSkin(String nombreCuenta, String nombrePersonaje, String nombreSkin){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         Personaje personaje = skins.buscarPorNombrePersonaje(nombrePersonaje);
@@ -258,35 +273,42 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
             throw new NullPointerException("El personaje seleccionado no existe.");
     }
 
+    @Override
     public void recargarRP(String nombreCuenta, int rp){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         usuario.agregarRp(rp);
     }
 
+    @Override
     public String obtenerEstadisticasPersonaje(){
         String texto = "La recaudacion de ventas que obtuvo por personaje: \n";
         texto += personaje.formatoEstadistica();
         return texto;
     }
 
+    @Override
     public String obtenerRecaudacionPorRol(){
         return personajes.formatoRecRol();
     }
 
+    @Override
     public String obtenerRecaudacionPorRegion(){
         return.usuarios.formatoRecRegion();
     }
 
+    @Override
     public String obtenerCantPersonajesPorRol(){
         return personajes.formatoCantRol();
     }
 
+    @Override
     public String cuentasMayMen(){
         String titulo = "Los usuarios ordenados de mayor a menor nivel: ";
         return titulo;
         return usuarios.formatoMayorMenor();
     }
 
+    @Override
     public boolean agregarNuevaSkin(String nombrePersonaje, String nombreSkin, String calidad){
         Skin skin = skins.buscarPorNombreSkin(nombreSkin);
         if (skin==null){
@@ -295,6 +317,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
+    @Override
     public boolean agregarNuevoPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int recaudacionPersonaje){
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
         if (personaje==null){
@@ -303,6 +326,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
+    @Override
     public void bloqueoUsuario(String nombreCuenta){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         if (usuario == null){
@@ -312,6 +336,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
     
+    @Override
     public String verificarBloqueo(String nombreCuenta){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         return usuario.getBloqueado();
