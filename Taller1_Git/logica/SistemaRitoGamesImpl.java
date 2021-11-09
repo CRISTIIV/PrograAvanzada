@@ -38,7 +38,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         if (personaje == null){
             Personaje personajeNuevo = new Personaje(nombrePersonaje, rol, totalSkins, nombreSkins, recaudacionPersonaje);
             if (!personajes.insertar(personajeNuevo)){
-                throw new NullPointerException("La lista de personajes ya estÃ¡ llena, para ingresar nuevos personajes debe hacerlo manualmente.");
+                throw new NullPointerException("La lista de personajes ya esta llena, para ingresar nuevos personajes debe hacerlo manualmente.");
             }
         }
         else{
@@ -52,7 +52,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         if (skin == null){
             Skin skinNueva = new Skin(nombreSkin, calidad, nombrePersonaje);
             if (!skins.insertar(skinNueva)){
-                throw new NullPointerException("La lista de skins ya estÃ¡ llena, para ingresar nuevas skins debe hacerlo manualmente.");
+                throw new NullPointerException("La lista de skins ya esta llena, para ingresar nuevas skins debe hacerlo manualmente.");
             }
         }
         else{
@@ -114,7 +114,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
 
         if (usuario == null){
-            return "La cuenta ingresada no existe, Â¿desea registrase?";
+            return "La cuenta ingresada no existe, ¿desea registrase?";
         }
         else{
             if (usuario != null && usuario.getPassword().equals(password)){
@@ -175,7 +175,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
             }
             for (int i = 0; i < usuario.getListaPersonajesPoseidos().getCantidad(); i++){
                 PersonajePoseido personaje = usuario.getListaPersonajesPoseidos().buscarPorI(i);
-                texto += "Personaje NÂ°"+i+": "+personaje.getPersonaje().getNombrePersonaje()+"\n";
+                texto += "Personaje N°"+i+": "+personaje.getPersonaje().getNombrePersonaje()+"\n";
                 for (int j = 0; j < usuario.getListaSkinsPoseidas().getCantidad(); j++){
                     Skin skin = usuario.getListaSkinsPoseidas().buscarPorI(j);
                     texto += "Skins del personaje: "+skin.getNombreSkin()+"\n";
