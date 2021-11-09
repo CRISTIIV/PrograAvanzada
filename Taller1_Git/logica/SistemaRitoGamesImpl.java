@@ -17,7 +17,6 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         skins = new ListaSkin(1000);
         personajes = new ListaPersonaje(200);
         personajesPoseidos = new ListaPersonajePoseido(1000);
-        //skinsPoseidas = new ListaSkinPoseida(2000);
     }
     @Override
     public void agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region){
@@ -33,10 +32,10 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    public void agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int precioPersonaje, int recaudacionPersonaje){
+    public void agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int recaudacionPersonaje){
         Personaje personaje = personajes.buscarPorNombrePersonaje(nombrePersonaje);
         if (personaje == null){
-            Personaje personajeNuevo = new Personaje(nombrePersonaje, rol, totalSkins, nombreSkins, precioPersonaje, recaudacionPersonaje);
+            Personaje personajeNuevo = new Personaje(nombrePersonaje, rol, totalSkins, nombreSkins, recaudacionPersonaje);
             if (!personajes.insertar(personajeNuevo)){
                 throw new NullPointerException("La lista de personajes ya está llena, para ingresar nuevos personajes debe hacerlo manualmente.");
             }
@@ -46,10 +45,10 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         }
     }
 
-    public void agregarSkin(String nombreSkin, String calidad, int precioSkin, String nombrePersonaje){
+    public void agregarSkin(String nombreSkin, String calidad, String nombrePersonaje){
         Skin skin = skins.buscarPorNombrePersonaje(nombrePersonaje);
         if (skin == null){
-            Skin skinNueva = new Skin(nombreSkin, calidad, precioSkin, nombrePersonaje);
+            Skin skinNueva = new Skin(nombreSkin, calidad, nombrePersonaje);
             if (!skins.insertar(skinNueva)){
                 throw new NullPointerException("La lista de skins ya está llena, para ingresar nuevas skins debe hacerlo manualmente.");
             }
@@ -314,20 +313,8 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
         if (usuario == null){
             throw new NullPointerException("La cuenta ingresada no existe");
         } else {
-            Boolean pertenece = false;
-            for (int i = 0; i < usuarios.getCantidad(); i++) {
-                Usuario usuarioActual = usuarios.buscarPorI(i));
-                if(usuarioActual.getNombreCuenta().equals(nombreCuenta)){
-                    pertenece = true;
-                    break;
-                }
-            }
-            if (pertenece){
-                usuarios.bloquear(nombreCuenta);
-            } else {
-                throw new NullPointerException("La cuenta no está registrada.");
-            }
+            usuario.setBloqueado("bloqueado");
         }
     }
-    
+
 }
