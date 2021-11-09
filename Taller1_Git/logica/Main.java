@@ -94,7 +94,6 @@ public class Main {
         }    
     }
     
-    //EDITAR
     public static void menuAdmin(SistemaRitoGames sistema){
         Scanner sc = new Scanner(System.in);
         System.out.println("Bienvenido ADMINISTRADOR, Que desea realizar? ");
