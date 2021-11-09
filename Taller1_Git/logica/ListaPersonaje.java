@@ -103,9 +103,7 @@ public class ListaPersonaje {
         }
         return salida;
     }
-<<<<<<< HEAD
 
-    
     public String obtenerSkins(){
         String texto = "Lista de Skins de los personajes: \n";
         for (int i = 0; i < cantidad; i++){
@@ -119,13 +117,6 @@ public class ListaPersonaje {
         return texto;
     }
 
-=======
-    
-    /**
-     * Method to print the names of the characters and the income of them by using their role.
-     * @return String 
-     */
->>>>>>> 71384d8cdd9cae89993a654c3f3e94260efd70bd
     public String formatoRecRol(){
         int sup = 0;
         int adc = 0;
