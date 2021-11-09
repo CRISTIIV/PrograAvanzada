@@ -2,6 +2,10 @@ package Taller1_Git.logica;
 import Taller1_Git.dominio.Skin;
 import Taller1_Git.dominio.Personaje;
 
+/**
+ * @author Vicente Cristi & Sebastian Reyes (equipo S&V)
+ */
+
 public class ListaSkin {
     private int cantidad;
     private int maximo;
@@ -45,7 +49,12 @@ public class ListaSkin {
     public void setPersonaje(Personaje personaje) {
         this.personaje = personaje;
     }
-
+    
+    /**
+     * Method to insert a new skin to the array of skins.
+     * @param skin Name of the skin.
+     * @return Boolean to know if there is still a place on the array. 
+     */
     public boolean insertar(Skin skin){
         if (cantidad < maximo){
             listaSkins[cantidad]=skin;
@@ -64,7 +73,12 @@ public class ListaSkin {
         }
         return null;
     }
-
+    
+    /** 
+     * Method to find a skin by using it's name.
+     * @param nombreSkin Name of the skin.
+     * @return The skin that we were looking for or, null to clarify that this skin doesn't exists.
+     */
     public Skin buscarPorNombreSkin(String nombreSkin){
         for (int i = 0; i < cantidad; i++){
             Skin skin = listaSkins[i];
@@ -74,7 +88,12 @@ public class ListaSkin {
         }
         return null;
     }
-
+    
+    /**
+     * Method to find a skin by using it's position in the array.
+     * @param i index
+     * @return The skin that we were looking for or a null, to clarify that this skin doesn't exists.
+     */
     public Skin buscarPorI(int i){
         Skin skin = listaSkins[i];
         if (skin!=null){

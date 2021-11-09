@@ -2,6 +2,10 @@ package Taller1_Git.logica;
 import Taller1_Git.dominio.PersonajePoseido;
 import Taller1_Git.dominio.Personaje;
 
+/**
+ * @author Vicente Cristi & Sebastian Reyes (equipo S&V)
+ */
+
 public class ListaPersonajePoseido {
     private int cantidad;
     private int maximo;
@@ -45,7 +49,12 @@ public class ListaPersonajePoseido {
     public void setPersonaje(Personaje personaje) {
         this.personaje = personaje;
     }
-
+    
+    /**
+     * Method to insert a new possedssed character to the array of possessed characters.
+     * @param personaje Name of the character.
+     * @return Boolean to know if there is still a place on the array. 
+     */
     public boolean insertar(PersonajePoseido personajePoseido){
         if (cantidad < maximo){
             listaPersonajesPoseidos[cantidad]=personajePoseido;
@@ -55,7 +64,11 @@ public class ListaPersonajePoseido {
         return false;
     }
     
-      //PARA EL BUSCAR POR NOMBRE CREO QUE HAY DOS OPCIONES, Y SI HAY OTRA NO SÉ:(
+    /** 
+     * Method to find a possessed character by using it's name.
+     * @param nombrePersonaje Name of the character.
+     * @return The character that we were looking for or, null to clarify that this possessed character doesn't exists.
+     */ 
     public Personaje buscarPorNombrePersonaje1(String nombrePersonaje){
         for (int i = 0; i < cantidad; i++){
             Personaje personaje = listaPersonajesPoseidos[i];
@@ -65,18 +78,12 @@ public class ListaPersonajePoseido {
         }
         return null;
     }
-    /*
-    //VIÉNDOLO BIEN ESTE NO TIENE MUCHO SENTIDO, PERO ESPERAR A QUE REVISEN
-    public PersonajePoseido buscarPorNombrePersonaje2(Personaje personaje){
-        for (int i = 0; i < cantidad; i++){
-            personaje = listaPersonajesPoseidos[i];
-            if (personaje.getNombrePersonaje().equals(personaje)){
-                return personaje;
-            }
-        }
-        return null;
-    }*/
-
+    
+    /**
+     * Method to find a possessed character by using it's position in the array.
+     * @param i index
+     * @return The posssessed character that we were looking for or a null, to clarify that this character doesn't exists.
+     */
     public PersonajePoseido buscarPorI(int i){
         PersonajePoseido personajePoseido = listaPersonajesPoseidos[i];
         if (personajePoseido!=null){
@@ -84,21 +91,4 @@ public class ListaPersonajePoseido {
         }
         return null;
     }
-
-    /* //CREO QUE ESTE NO SE USA
-    public boolean agregarNewPersonajeP(String nombreNewPersonajeP){
-        if (cantidad < maximo){
-            listaPersonajesPoseidos[cantidad]=nombreNewPersonajeP;
-            cantidad++;
-            return true;
-        }
-        if (cantidad = maximo){
-            maximo+=1;
-            listaPersonajesPoseidos[cantidad]=nombreNewPersonajeP;
-            cantidad++;
-            return true;
-        }
-        return false;
-    }*/
-
 }
