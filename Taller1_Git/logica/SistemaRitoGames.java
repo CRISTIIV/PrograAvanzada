@@ -4,31 +4,29 @@ public interface SistemaRitoGames {
     
     void agregarUsuario(String nombreCuenta, String password, String nick, int nivel, int rp, int totalPersonajes, String nombrePersonajes, int totalSkins, String nombreSkins, String region);
 
-    void agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int precioPersonaje, int recaudacionPersonaje);
+    void agregarPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int recaudacionPersonaje);
 
-    void setRecaudacionPersonaje(String nombrePersonaje, int estadisticas);
-
-    boolean agregarSkin(String nombreSkin, String calidad, int precioSkin, String nombrePersonaje);
+    void agregarSkin(String nombreSkin, String calidad, String nombrePersonaje);
 
     void asociarPersonajeUsuario(String nombrePersonaje, String nombreCuenta);
 
     void asociarSkinPersonaje(String nombreSkin, String nombrePersonaje);
 
-    void asociarSkinUsuario(String nombreSkin, String nombreCuenta);
+    void asociarSkinUsuario(String nombreSkin, String nombreCuenta, String nombrePersonaje);
 
     String iniciarSesion(String nombreCuenta, String password);
 
     void cambiarPassword(String nombreCuenta, String oldPassword, String newPassword);
 
-    String obtenerDatosUsuario();
+    String obtenerDatosUsuario(String nombreCuenta);
+
+    String obtenerDatosUsuarios();
 
     String obtenerDatosPersonajes();
 
-    String obtenerDatosSkins();
+    String obtenerDatosEstadisticas();
 
     String obtenerPersonajeSegunUsuario(String nombreCuenta);
-
-    String obtenerSkinSegunUsuario(String nombreCuenta);
 
     String obtenerSkinSegunPersonaje(String nombrePersonaje);
 
@@ -50,7 +48,7 @@ public interface SistemaRitoGames {
 
     boolean agregarNuevaSkin(String nombrePersonaje, String nombreSkin, String calidad);
 
-    boolean agregarNuevoPersonaje(String nombrePersonaje, String rol, int numeroSkins);
+    boolean agregarNuevoPersonaje(String nombrePersonaje, String rol, int totalSkins, String nombreSkins, int recaudacionPersonaje);
 
     void bloqueoUsuario(String nombreCuenta);
     
