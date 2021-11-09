@@ -316,6 +316,7 @@ public class SistemaRitoGamesImpl implements SistemaRitoGames{
             usuario.setBloqueado("bloqueado");
         }
     }
+    
     public String verificarBloqueo(String nombreCuenta){
         Usuario usuario = usuarios.buscarPorNombreCuenta(nombreCuenta);
         return usuario.getBloqueado();
