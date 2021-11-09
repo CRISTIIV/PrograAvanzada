@@ -30,6 +30,8 @@ public interface SistemaRitoGames {
 
     String obtenerSkinSegunPersonaje(String nombrePersonaje);
 
+    String obtenerSkinsPersonajes();
+
     void comprarPersonaje(String nombreCuenta, String nombrePersonaje);
 
     void comprarSkin(String nombreCuenta, String nombrePersonaje, String nombreSkin);
