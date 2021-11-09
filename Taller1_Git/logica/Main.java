@@ -116,11 +116,11 @@ public class Main {
                     break;
                 
                 case "2":
-                   
+                    System.out.println(sistema.obtenerRecaudacionPorRegion());
                     break;
                 
                 case "3":
-                  
+                    System.out.println(sistema.obtenerEstadisticasPersonaje());
                     break;
                 
                 case "4":
