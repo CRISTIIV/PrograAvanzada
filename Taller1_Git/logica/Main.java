@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+import Taller1_Git.dominio.Usuario;
+
 public class Main {
     public static void main(String[] args){
         SistemaRitoGames sistema = new SistemaRitoGamesImpl();
@@ -19,10 +21,15 @@ public class Main {
             System.out.println("Ingrese su contrasena: ");
             String password = scanner.next();
 
-            mainMenu(sistema, nombreCuenta, password);
-            System.out.println("Desea cerrar el sistema? (si-no)");      
-            String cerrar = scanner.next().toLowerCase();
-            if(cerrar.equals("si"))break;      
+            if (sistema.verificarBloqueo(nombreCuenta).equals("bloqueado")){
+                System.out.println("Este usuario se encuentra bloqueado, no tiene permitido el ingreso al sistema.");
+                break;
+            }else{
+                mainMenu(sistema, nombreCuenta, password);
+                System.out.println("Desea cerrar el sistema? (si-no)");      
+                String cerrar = scanner.next().toLowerCase();
+                if(cerrar.equals("si"))break;   
+            }
         }
         cierreSistema(sistema);
         scanner.close();
@@ -105,7 +112,7 @@ public class Main {
             Boolean salir = false;
             switch (opcion) {
                 case "1":
-                   
+                   System.out.println(sistema.obtenerRecaudacionPorRol());
                     break;
                 
                 case "2":
