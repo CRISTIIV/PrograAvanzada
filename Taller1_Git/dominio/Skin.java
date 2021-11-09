@@ -4,14 +4,12 @@ import Taller1_Git.dominio.Personaje;
 public class Skin {
     private String nombreSkin;
     private String calidad;
-    //private int precioSkin;
     private String nombrePersonaje;
     private Personaje personaje;
     
     public Skin(String nombreSkin, String calidad, String nombrePersonaje){
         this.nombreSkin = nombreSkin;
         this.calidad = calidad;
-        //this.precioSkin = precioSkin;
         this.nombrePersonaje = nombrePersonaje;
     }
 
@@ -30,14 +28,6 @@ public class Skin {
     public void setCalidad(String calidad) {
         this.calidad = calidad;
     }
-/*
-    public int getPrecioSkin() {
-        return precioSkin;
-    }
-
-    public void setPrecioSkin(int precioSkin) {
-        this.precioSkin = precioSkin;
-    }*/
 
     public String getNombrePersonaje() {
         return nombrePersonaje;
