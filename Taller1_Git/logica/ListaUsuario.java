@@ -4,6 +4,10 @@ import Taller1_Git.dominio.Skin;
 import Taller1_Git.dominio.Usuario;
 import java.util.Arrays;
 
+/**
+ * @author Vicente Cristi & Sebastian Reyes (equipo S&V)
+ */
+
 public class ListaUsuario {
     private int cantidad;
     private int maximo;
@@ -47,7 +51,12 @@ public class ListaUsuario {
     public void setSkin(Skin skin) {
         this.skin = skin;
     }
-
+	
+	/**
+     * Method to insert a new user in the array of users.
+     * @param usuario Name of the User
+     * @return Boolean to know if there is still a place on the array. 
+     */ 
     public boolean insertar(Usuario usuario){
         if (cantidad < maximo){
             listaUsuarios[cantidad]=usuario;
@@ -56,7 +65,12 @@ public class ListaUsuario {
         }
         return false;
     }
-
+	
+	/** 
+     * Method to find a user by using it's name.
+     * @param nombreCuenta Name of the user.
+     * @return The user that we were looking for or, null to clarify that this user doesn't exists.
+     */
     public Usuario buscarPorNombreCuenta(String nombreCuenta){
         for (int i = 0; i < cantidad; i++){
             Usuario usuario = listaUsuarios[i];
@@ -66,7 +80,12 @@ public class ListaUsuario {
         }
         return null;
     }
-
+	
+	/**
+     * Method to find a user by using it's position on the array.
+     * @param i index
+     * @return The user that we were looking for or a null, to clarify that this user doesn't exists.
+     */
     public Usuario buscarPorI(int i){
         Usuario usuario = listaUsuarios[i];
         if (usuario!=null){
@@ -74,7 +93,11 @@ public class ListaUsuario {
         }
         return null;
     }
-
+	
+	/**
+     * Method to print the names of the users.
+     * @return String
+     */
     public String formatoEscritura(){
         String salida = "";
         for (int i = 0; i<cantidad; i++){
@@ -83,6 +106,11 @@ public class ListaUsuario {
         }
         return salida;
     }
+
+	/**
+     * Method to print the income for every country available in the game.
+     * @return String 
+     */
     public String formatoRecRegion(){
         int las = 0;
         int lan = 0;
@@ -214,6 +242,11 @@ public class ListaUsuario {
         return salida;
         }   
     }
+	
+	/**
+     * Method to print the users who users have expended most money in the game. From higher to the lowest. 
+     * @return String
+     */
     public String formatoMayorMenor(){
         String salida = "";
         //Usuario usuarios = listaUsuarios;

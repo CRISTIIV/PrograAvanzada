@@ -1,6 +1,10 @@
 package Taller1_Git.logica;
 import Taller1_Git.dominio.Personaje;
 
+/**
+ * @author Vicente Cristi & Sebastian Reyes (equipo S&V)
+ */
+
 public class ListaPersonaje {
     private int cantidad;
     private int maximo;
@@ -116,7 +120,11 @@ public class ListaPersonaje {
         }
         return texto;
     }
-
+    
+    /**
+     * Method to print the names of the characters and the income of them by using their role.
+     * @return String 
+     */
     public String formatoRecRol(){
         int sup = 0;
         int adc = 0;
