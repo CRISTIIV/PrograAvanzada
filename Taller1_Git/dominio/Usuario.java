@@ -115,23 +115,7 @@ public class Usuario {
     public void setListaSkinsPoseidas(ListaSkin listaSkinsPoseidas) {
         ListaSkinsPoseidas = listaSkinsPoseidas;
     }
-/* //FORMA 2 DE formatoEscritura:
-    public String formateoSkins(){
-        int cantS = this.getListaSkinsPoseidas().getCantidad();
-        for (int i = 0; i < cantS; i++){
-            String skinPersonaje = (this.getListaSkinsPoseidas().buscarPorI(i)).toString();
-            return skinPersonaje+",";
-        }
-    }
-
-    public String formateoPersonajes(){
-        int cantP = this.getListaPersonajesPoseidos().getCantidad();
-        for (int i = 0; i < cantP; i++){
-            String personajeP = (this.getListaPersonajesPoseidos().buscarPorI(i)).toString();
-            return personajeP+","+this.formateoSkins();
-        }
-    }*/
-
+    
     public String formatoEscritura(){
         //FORMA 1:
         String texto = "";
@@ -143,8 +127,6 @@ public class Usuario {
                 texto += skin.getNombreSkin()+",";
             }
         }
-        //PARTE DE LA FORMA 2:
-        //return nombreCuenta+","+password+","+nick+","+nivel+","+rp+","+this.formateoPersonajes()+region+"\n";
         return nombreCuenta+","+password+","+nick+","+nivel+","+rp+","+texto+region+"\n";
     }
 
