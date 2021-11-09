@@ -124,11 +124,23 @@ public class Main {
                     break;
                 
                 case "4":
-                   
+                    System.out.println(sistema.obtenerCantPersonajesPorRol());
                     break;
                     
                 case "5":
-                   
+                    System.out.println("Usted eligio agregar un nuervo personaje al juego, a continuacion ingrese los datos del personaje: ");
+                    System.out.println("\nIngrese el nombre del personaje: ");
+                    String nuevoNombre = scanner.next();
+                    System.out.println("\nIngrese el rol del personaje: ");
+                    String nuevoRol = scanner.next();
+                    System.out.println("\nIngrese la cantidad de skins que tiene el personaje: ");
+                    int nuevoTotalSkins = scanner.next();
+                    for (int i = 0; i < nuevoTotalSkins; i++){
+                        System.out.println("\nIngrese el nombre de la skin N°"+(i+1)+": ");
+                        String nuevoNombreSkins = scanner.next()+",";
+                    }
+                    int nuevaRecaudacionPersonaje = 0;
+                    sistema.agregarNuevoPersonaje(nuevoNombre, nuevoRol, nuevoTotalSkins, nuevoNombreSkins, nuevaRecaudacionPersonaje);
                     break;
 
                 case "6":
