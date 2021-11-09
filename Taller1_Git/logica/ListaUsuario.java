@@ -57,24 +57,6 @@ public class ListaUsuario {
         return false;
     }
 
-    public boolean bloquear(String nombreCuenta){
-        int i;
-        boolean eliminado = false;
-        for (i = 0; i < cantidad; i++){
-            Usuario usuario = listaUsuarios[i];
-            if (usuario.getNombreCuenta().equals(nombreCuenta)){
-                eliminado = true;
-                break;
-            }
-        }
-        if (eliminado){
-            listaUsuarios[i].setBloqueado("bloqueado");
-            }
-            return true;
-        }
-        return false;
-    }
-
     public Usuario buscarPorNombreCuenta(String nombreCuenta){
         for (int i = 0; i < cantidad; i++){
             Usuario usuario = listaUsuarios[i];
