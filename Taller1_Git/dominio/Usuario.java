@@ -162,9 +162,9 @@ public class Usuario {
     }
 
     public String toStringDatosUsuario(){
-        String ultimos3 = password.substring(Math.max(0, text.length() - 3));
+        String ultimos3 = password.substring(Math.max(0,this.getPassword().length() - 3));
         String passwordConf = "******"+ultimos3;
-        return "Nombre de la cuenta: "nombreCuenta+"\nNick del usuario: "+nick+"\nUltimos caracteres de la contrasena: "+passwordConf+"\n";
+        return "Nombre de la cuenta: "+nombreCuenta+"\nNick del usuario: "+nick+"\nUltimos caracteres de la contrasena: "+passwordConf+"\n";
     }
     
 }
